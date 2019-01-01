@@ -1,0 +1,15 @@
+[% META title = 'View IG Approval Request' %]
+<p class="lead text-left">Reviewing Data Request ID: [% request.id %]</p>
+<p>Return to <a href="[% c.uri_for(c.controller.action_for('list')) %]">List</a> of Requests</p>
+<p><a href="[% c.uri_for(c.controller.action_for('review'), [request.id]) %]">Edit</a> IG Risk score for this request</p>
+
+[% USE JSON %]
+[% IF risk_scores.0 %]
+[% PROCESS requests/ig_risk_score.tt2 %]
+[% END %]
+
+[% PROCESS requests/requestor.tt2 %]
+[% PROCESS requests/data_purpose.tt2 %]
+[% PROCESS requests/data_handling.tt2 %]
+[% PROCESS requests/data_manage.tt2 %]
+[% PROCESS requests/data_requested.tt2 %]

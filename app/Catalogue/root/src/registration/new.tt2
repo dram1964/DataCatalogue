@@ -1,0 +1,23 @@
+[% META title="New User Registration" %]
+<div ng-app="register">
+  <div ng-controller="MainCtrl as ctrl">
+	<div><button ng-click="ctrl.change()">Autofill</button></div>
+    <form name="newUser" ng-submit="ctrl.submit()" method="post" action="ng_new_submitted" role="form">
+      <div class="messages"></div>
+      <div class="controls">
+[% INSERT registration/user_details.tt2 %]
+[% INSERT registration/user_work_details.tt2 %]
+[% INCLUDE registration/user_agree.tt2 %]
+	  <input type="submit" value="Submit" ng-disabled="newUser.$invalid">
+      </div><!-- end controls div -->
+    </form>
+  </div><!-- end ng-controller div -->
+
+
+
+<script src="[% site.url.js %]/angular1.3.11/angular.js"></script>
+<script type="text/javascript" src="[% site.url.ng %]/ng_register.js">
+</script>
+
+  </div><!-- end ng-controller div -->
+</div><!-- end ng-app div -->

@@ -1,0 +1,52 @@
+[% META title = "Record Data Extract Details" %]
+<p>Request ID: [% request.id %]</p>
+<p>Requested by: [% request.user.username %]</p>
+[% FOR submission IN submissions %]
+<h1>Submission Name: [% submission.project_name %]</h1>
+<p>Submission Type: [% submission.project_type %]</p>
+<p>Submission Location: [% submission.project_location %]</p>
+<p>Submission Run Date: [% submission.extract_run_date %]</p>
+<p>Submission Output File: [% submission.extract_output_file %]</p>
+<p>Submission Output File Location: [% submission.extract_output_file_location %]</p>
+<p>Submission Delivery Method: [% submission.extract_delivery_method %]</p>
+    [% FOR package IN submission.packages %]
+	<h2>Package:  [% package.package_name %]</h2>
+	[% FOR source IN package.data_sources %]
+	    <h3>Data Sources</h3>
+	    <p>Source Name: [% source.source_name %]</p>
+	    <p>Source Type: [% source.source_type %]</p>
+	[% END %]
+	[% FOR extract IN package.extracts %]
+	    <h3>Extracts</h3>
+	    <p>Extract Name: [% extract.extract_name %]</p>
+	    <p>Extract Query: [% extract.extract_query %]</p>
+	    <p>Extract Output Location: [% extract.extract_output_location %]</p>
+	    <p>Extract Output Type: [% extract.output_type %]</p>
+	    <p>Extract File Name: [% extract.filename %]</p>
+	[% END %]
+    [% END %]
+[% END %]
+
+<p>Please fill-in the details</p>
+<div ng-app="submission">
+  <div ng-controller="MainCtrl as ctrl">
+    <form name="submission" ng-submit="ctrl.submit()" method="post" action="[% c.uri_for(c.controller.action_for('update_submission'), [submission.request_id]) %]">
+  [% FOREACH submission IN submissions %]
+        <div class="form-group" ng-show=1>
+<label>Submission Name</label>
+<input type="text" name="submissionName" ng-model="ctrl.data.submissionName" 
+	class="form-control"></input>
+        </div><!-- end form-group -->
+  [% END %]
+        <div class="form-group" ng-show=1>
+<label>Submission Name</label>
+<input type="text" name="submissionName" ng-model="ctrl.data.submissionName" 
+	class="form-control"></input>
+        </div><!-- end form-group -->
+    </form>
+  </div><!-- end ng-controlller -->
+</div><!-- end ng-app -->
+
+<script src="[% site.url.js %]/angular1.3.11/angular.js"></script>
+<script type="text/javascript" src="[% site.url.ng %]/ng_submission.js">
+</script>

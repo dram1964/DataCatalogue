@@ -1,0 +1,74 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Profile Details</div>
+  <div class="panel-body">
+	<div class="form-group">
+	  <form action="[% c.uri_for(c.controller.action_for('update')) %]" method="post">
+	<label>Your current profile:</label>
+	  <div class="row">
+	    <div class="col-md-6">
+		<label>Username</label>
+		<input name="_username" value="[% user.username %]" type="text" disabled class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Email Address</label>
+		<input name="email_address" value="[% user.email_address %]" type="text" value="bob1@example.com" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label for="first_name">First Name</label>
+		<input name="first_name" value="[% user.first_name %]" type="text" class="form-control" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Last Name</label>
+		<input name="last_name" value="[% user.last_name %]" type="text" class="form-control" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Job Title</label>
+		<input name="job_title" value="[% user.job_title %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Department</label>
+		<input name="department" value="[% user.department %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Organisation</label>
+		<input name="organisation" value="[% user.organisation %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Address Line 1</label>
+		<input name="address1" value="[% user.address1 %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Address Line 2</label>
+		<input name="address2" value="[% user.address2 %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Address Line 3</label>
+		<input name="address3" value="[% user.address3 %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Post Code</label>
+		<input name="postcode" value="[% user.postcode %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>City</label>
+		<input name="city" value="[% user.city %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Telephone</label>
+		<input name="telephone" value="[% user.telephone %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	    <div class="col-md-6">
+		<label>Mobile</label>
+		<input name="mobile" value="[% user.mobile %]" type="text" class="form-control" columns="0" rows="0" />
+	    </div>
+	  </div><!-- end row div -->
+	  <div class="row">
+	    <div class="col-md-12">
+		<input name="Update" type="submit" value="Update"/>
+	    </div>
+	  </div>
+	  </form>
+	</div><!-- end form group -->
+  </div><!-- end panel-body --> 
+</div><!-- end panel --> 
+

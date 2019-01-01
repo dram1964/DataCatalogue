@@ -1,0 +1,25 @@
+[% META title = 'Metadata Catalogue Contacts List' %]
+[% FOREACH contact IN site.contacts %]
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td>Role</td>
+        <td>[% contact.role %]</td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>[% contact.name %]</td>
+      </tr>
+      <tr>
+	<td>Email</td>
+        <td>[% contact.email %]</td>
+      </tr>
+      <tr>
+	<td>Phone</td>
+        <td>[% contact.phone %]</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+[% END %]

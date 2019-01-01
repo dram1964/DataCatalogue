@@ -1,0 +1,16 @@
+[% PROCESS site/nav %]
+[% PROCESS site/header %]
+<div class="container-fluid"><!-- begin fluid container -->
+  <div class="row"><!-- begin row -->
+    <div class="col-sm-3 col-md-2 sidebar"><!-- begin first column -->
+[% PROCESS site/menu %]
+    </div><!-- end first column -->
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"><!-- begin second column -->
+[% PROCESS site/messages %]
+[% PROCESS site/pagesearch %]
+<h1>[% template.title %]</h1>
+[% content %]
+    </div><!-- end second column -->
+  </div><!-- end row -->
+</div><!-- end fluid container -->
+[% PROCESS site/footer %]

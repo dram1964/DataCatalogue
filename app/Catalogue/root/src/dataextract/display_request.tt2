@@ -1,0 +1,17 @@
+[% META title = 'Data Request Details' %]
+<p class="lead text-left">Summary for Data Request ID: [% request.id %]</p>
+<p class="hidden-print"><a href="[% c.uri_for(c.controller.action_for('display_submissions'), [request.id]) %]">View Data Submissions</a></p>
+<p class="hidden-print">Return to <a href="[% c.uri_for(c.controller.action_for('list')) %]">List</a> of Requests</p>
+
+[% PROCESS requests/requestor.tt2 %]
+[% PROCESS requests/data_purpose.tt2 %]
+
+[% USE JSON %]
+[% IF risk_scores.0 %]
+[% PROCESS requests/ig_risk_score.tt2 %]
+[% END %]
+
+[% PROCESS requests/data_handling.tt2 %]
+[% PROCESS requests/data_manage.tt2 %]
+[% PROCESS requests/data_requested.tt2 %]
+

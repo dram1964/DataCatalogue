@@ -1,0 +1,59 @@
+[% IF request.verify_handling %]
+<div class="panel panel-success">
+[% ELSE %]
+<div class="panel panel-warning">
+[% END %]
+  <div class="panel-heading">Data Handling</div>
+  <div class="panel-body text-left">
+      <div ng-controller="Handling as ctrl2">
+	<form action="[% c.uri_for(c.controller.action_for('handling_verify'), [request.id]) %]" method="post">
+[% IF dh.request.request_type_id == 1 %]
+  <dl>
+       [% IF dh.rec_approval == 1 %]
+	  <dt>REC Approval:</dt>
+	  <dd>Yes</dd>
+	  <dt>REC Approval Reference:</dt>
+	  <dd>[% dh.rec_approval_number || no_response %]</dd>
+  </dl>
+       [% ELSE %]
+  <dl>
+	  <dt>REC Approval:</dt>
+	  <dd>No</dd>
+  </dl>
+       [% END %]
+  <div ng-show="ctrl2.edit == 1">
+    <textarea name="rec_comment" ng-model="ctrl2.rec_comment" class="form-control" placeholder="REC Approval comments"></textarea>
+  </div>
+[% END %]
+<hr>
+<dl>
+	<dt>Please indicate how you intend to identify the data subjects for this request</dt>
+	<dd>[% dh.population || no_response %]</dd>
+</dl>
+  <div ng-show="ctrl2.edit == 1">
+    <textarea name="population_comment" ng-model="ctrl2.population_comment" class="form-control" placeholder="Population comments"></textarea>
+  </div>
+<hr>
+
+    [% INCLUDE datareview/patient_identifiers.tt2 %]
+
+<dl>
+        <dt>Please specify where you intend to publish your results:</dt>
+     [% IF dh.publish == 1 %]
+	<dd>[% dh.publish_to || no_response %]</dd>
+     [% ELSE %]
+	<dd>None</dd>
+     [% END %]
+</dl>
+  <div ng-show="ctrl2.edit == 1">
+    <textarea name="publish_comment" ng-model="ctrl2.publish_comment" class="form-control" placeholder="publication comments"></textarea>
+  </div>
+<hr>
+
+	<input type="button" class="btn btn-primary" ng-click="ctrl2.addComments()" ng-show="ctrl2.edit == 0" value="Add Comments">
+	<input type="button" class="btn btn-primary" ng-click="ctrl2.addComments()" ng-show="ctrl2.edit == 1" value="Hide Comments">
+        <input type="submit" class="btn btn-primary" value="Submit Comments">
+    </form>
+      </div><!-- end ng-controller -->
+  </div><!-- end panel-body -->
+</div><!-- end panel -->

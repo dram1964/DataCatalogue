@@ -1,0 +1,5 @@
+[% META title="My Details" %]
+
+[% INCLUDE profile/profile_form.tt2 %]
+
+[% INCLUDE profile/password_form.tt2 %]

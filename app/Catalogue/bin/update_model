@@ -1,0 +1,2 @@
+#!/bin/bash
+script/catalogue_create.pl model DB DBIC::Schema Catalogue::Schema create=static components=TimeStamp,PassphraseColumn dbi:mysql:catalogue_test 'tutorial' 'thispassword' '{ AutoCommit => 1 }'

@@ -1,0 +1,6 @@
+[% IF error_msg %]
+<p>Could not create user</p>
+[% ELSE %]
+<p>User [% request.email_address %] created!</p>
+[% END %]
+

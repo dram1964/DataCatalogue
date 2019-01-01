@@ -1,0 +1,8 @@
+[% META title="Datasets ExploreNG" %]
+<h1>Showing Dataset information for [% dataset.name %]</h1>
+<p class="lead">Description: [% dataset.description %]</p>
+[% FOREACH item IN facts %]
+  [% IF item.fact_type == 'population' %]
+    [% INCLUDE datasets/ng_population.tt2 %]
+  [% END %]
+[% END %]

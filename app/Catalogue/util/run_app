@@ -1,0 +1,2 @@
+#!/bin/bash
+MYAPP_DSN='dbi:mysql:catalogue' CATALYST_DEBUG=0 script/catalogue_server.pl -p8080 --background

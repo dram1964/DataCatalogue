@@ -1,0 +1,43 @@
+indicator: submit
+elements:
+    - type: Text
+      name: task
+      label: Task
+      attributes:
+        title: Enter a task title here
+        class: form-control
+        cols: 0
+        rows: 0
+        autofocus: 1
+      constraints:
+        - type: Length
+          min: 5
+          max: 100
+          message: must be between 5 and 100 characters long
+        - Required
+
+    - type: Text
+      name: comment
+      label: Description
+      attributes:
+        title: Enter a full description for the required task
+        class: form-control
+        cols: 0
+        rows: 0
+ 
+    - type: Select
+      name: assigned_to
+      label: AssignedTo
+      attributes:
+        class: form-control
+        cols: 0
+        rows: 0
+ 
+    - type: Submit
+      name: submit 
+      value: Submit
+      attributes:
+          class: btn btn-primary
+filter:
+    - TrimEdges
+    - HTMLEscape

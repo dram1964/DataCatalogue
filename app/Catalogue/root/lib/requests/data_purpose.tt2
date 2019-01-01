@@ -1,0 +1,43 @@
+[% IF dh %]
+<div class="table-responsive">
+  <table class="table table-striped text-left">
+    <caption>Request Purpose</caption>
+    <thead>
+      <tr> <th>Data Item</th> <th>Data Requested</th> </tr>
+    </thead>
+    <tbody> 
+	<tr><td>Request Type</td> <td>[% request.request_type.name %]</td>
+        <tr><td>Request Type Description</td><td>[% request.request_type.description %]</td></tr>
+  [% IF dh.request.request_type_id == 4 %]
+    <tr><td>Study Name </td>
+    <td>[% dh.area || "&nbsp;" %]</td></tr>
+    <tr><td>Study Lead </td>
+    <td>[% dh.responsible || "&nbsp;" %]</td></tr>
+  [% ELSIF dh.request.request_type_id == 2 %]
+    <tr><td>Clinical Service Area </td>
+    <td>[% dh.area || "&nbsp;" %]</td></tr>
+    <tr><td>Clinical Service Lead </td>
+    <td>[% dh.responsible || "&nbsp;" %]</td></tr>
+  [% ELSIF dh.request.request_type_id == 5 %]
+    <tr><td>Service Area </td>
+    <td>[% dh.area || "&nbsp;" %]</td></tr>
+    <tr><td>Service Lead </td>
+    <td>[% dh.responsible || "&nbsp;" %]</td></tr>
+  [% ELSIF dh.request.request_type_id == 6 %]
+    <tr><td>Academic Area </td>
+    <td>[% dh.area || "&nbsp;" %]</td></tr>
+    <tr><td>Academic Lead </td>
+    <td>[% dh.responsible || "&nbsp;" %]</td></tr>
+  [% ELSIF dh.request.request_type_id == 1 %]
+    <tr><td>Research Project Name</td>
+    <td>[% dh.area || "&nbsp;" %]</td></tr>
+    <tr><td>Research Project Lead</td>
+    <td>[% dh.responsible || "&nbsp;" %]</td></tr>
+  [% END %]
+    <tr><td>Responsible Organisation</td><td>[% dh.organisation || "&nbsp;" %]</td></tr>
+    <tr><td>Objective</td><td>[% dh.objective || "&nbsp;" %]</td></tr>
+    <tr><td>Benefits</td><td>[% dh.benefits || "&nbsp;" %]</td></tr>
+    </tbody>
+  </table>
+</div>
+[% END %]

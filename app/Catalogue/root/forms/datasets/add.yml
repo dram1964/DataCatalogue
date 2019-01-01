@@ -1,0 +1,34 @@
+indicator: submit
+elements:
+    - type: Text
+      name: name
+      label: Dataset Name
+      attributes:
+        title: Enter the dataset name here
+        class: form-control
+        autofocus: 1
+      constraints:
+        - type: Length
+          min: 5
+          max: 50
+          message: must be between 5 and 50 characters long
+        - Required
+
+    - type: Textarea
+      name: description
+      label: Description
+      attributes:
+        title: Enter a full description for the dataset
+        class: form-control
+        rows: 0
+        columns: 0
+ 
+    - type: Submit
+      name: submit 
+      value: Submit
+      attributes:
+        class: btn btn-primary
+
+filter:
+    - TrimEdges
+    - HTMLEscape

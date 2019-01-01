@@ -1,0 +1,6 @@
+<p>Displaying entries [% pager.first %] - [% pager.last %] of [% pager.total_entries %]. Navigation: &lt;&lt;
+<a href="[% c.request.uri_with({ page => pager.first_page}) %]">First</a>
+<a href="[% c.request.uri_with({ page => pager.previous_page}) %]">Previous</a>
+<a href="[% c.request.uri_with({ page => pager.next_page}) %]">Next</a>
+<a href="[% c.request.uri_with({ page => pager.last_page}) %]">Last</a>
+&gt;&gt;</p>

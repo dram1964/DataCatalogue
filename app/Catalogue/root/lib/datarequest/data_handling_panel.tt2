@@ -1,0 +1,98 @@
+<div class="row" ng-show="ctrl.data.requestType == [% type %]">
+  <div class="col-lg-12">
+[% IF verify.handling_user_name %]
+<div class="panel panel-danger">
+[% ELSE %]
+<div class="panel panel-success">
+[% END %]
+      <div class="panel-heading">Data Handling </div>
+      <div class="panel-body text-left">
+
+[% IF type == 1 %]
+        <div class="form-group">
+<label>Do you have REC approval for the study</label>
+<label class="radio-inline"><input type="radio" name="recApproval" 
+  ng-model = "ctrl.data.recApproval" value="1">Yes</label>
+<label class="radio-inline"><input type="radio" name="recApproval" 
+  ng-model = "ctrl.data.recApproval" value="0">No</label>
+        </div><!-- end form-group -->
+
+        <div class="form-group" ng-show="ctrl.data.recApproval == 1">
+<label>REC Approval Reference</label>
+<p>Please specify your REC approval reference number:</p>
+<input type="textarea" name="recApprovalNumber" ng-model="ctrl.data.recApprovalNumber" 
+	class="form-control"></input>
+  [% IF verify.rec_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.rec_comment %] - [% verify.handling_user_name %]</span></p> 
+  [% END %]
+        </div><!-- end form-group -->
+[% END %]
+
+
+        <div class="form-group">
+<label>Data Population</label>
+<p>Please indicate how you intend to identify the data subjects for this request. For example, list of subjects from Study Database or all patients with a particular diagnosis.</p>
+<input type="textarea" name="population[% type %]" ng-model="ctrl.data.population[% type %]"
+	class="form-control"></input>
+[% IF verify.population_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.population_comment %] - [% verify.handling_user_name %]</span></p> 
+[% END %]
+        </div><!-- end form-group -->
+
+
+          <div class="form-group">
+            <label>Do you require data with patient identifiers?</label>
+<p>Where use of personal confidential data is considered to be essential, the inclusion of each individual item of data should be considered and justified so that the minimum amount of personal confidential data is transferred or accessible as part of this data access request</p>
+            <label class="radio-inline"><input type="radio" ng-model="ctrl.data.identifiable[% type %]" name="identifiable[% type %]" value="1">Yes</label>
+            <label class="radio-inline"><input type="radio" ng-model="ctrl.data.identifiable[% type %]" name="identifiable[% type %]" value="0">No</label>
+          </div><!-- end form-group -->
+
+[% INCLUDE datarequest/identifiers.tt2 %]
+[% IF verify.id_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.id_comment %] - [% verify.handling_user_name %]</span></p> 
+[% END %]
+
+[% INCLUDE datarequest/legal_basis.tt2 %]
+
+        <div class="form-group" ng-show="ctrl.data.identifiable[% type %] == 1">
+<label>Will you be disclosing patient identifiers to any entities external to your requesting organisation?</label>
+<label class="radio-inline"><input type="radio" ng-model="ctrl.data.disclosure[% type %]" name="disclosure[% type %]" value="1">Yes</label>
+<label class="radio-inline"><input type="radio" ng-model="ctrl.data.disclosure[% type %]" name="disclosure[% type %]" value="0" selected>No</label>
+        </div><!-- end form-group -->
+
+        <div class="form-group" ng-show="ctrl.data.identifiable[% type %] == 1 && ctrl.data.disclosure[% type %] == 1">
+<label>Third-Party disclosure</label>
+<p>Please specify all third-parties you intend to disclose patient identifiers to. Please explain why each disclosure is necessary and what arrangements will be made to secure the data in transit for each disclosure:</p>
+<textarea name="disclosureIdSpecification[% type %]" ng-model="ctrl.data.disclosureIdSpecification[% type %]" 
+	class="form-control"></textarea>
+        </div><!-- end form-group -->
+
+        <div class="form-group" ng-show="ctrl.data.identifiable[% type %] == 1 && ctrl.data.disclosure[% type %] == 1">
+<label>Contractual Arrangements</label>
+<p>Please specify the contractual or other formal arrangements in place to control and manage the data held by any and all third-parties as part of this data request:</p>
+<textarea name="disclosureContract[% type %]" ng-model="ctrl.data.disclosureContract[% type %]" 
+	class="form-control"></textarea>
+[% IF verify.id_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.id_comment %] - [% verify.handling_user_name %]</span></p> 
+[% END %]
+        </div><!-- end form-group -->
+
+        <div class="form-group">
+<label>Do you expect to be publishing the results of this study to any entities outside of UCLH?</label>
+<label class="radio-inline"><input type="radio" ng-model="ctrl.data.publish[% type %]" name="publish[% type %]" value="1">Yes</label>
+<label class="radio-inline"><input type="radio" ng-model="ctrl.data.publish[% type %]" name="publish[% type %]" value="0">No</label>
+        </div><!-- end form-group -->
+
+        <div class="form-group" ng-show="ctrl.data.publish[% type %] == 1">
+<br><label>Please specify where you intend to publish your results:</label>
+<textarea name="publishIdSpecification[% type %]" ng-model="ctrl.data.publishIdSpecification[% type %]" 
+	class="form-control"></textarea>
+[% IF verify.publish_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.publish_comment %] - [% verify.handling_user_name %]</span></p> 
+[% END %]
+        </div><!-- end form-group -->
+
+      </div><!-- end panel-body div -->
+    </div><!-- end panel-panel div -->
+  </div><!-- end col-lg-12 div -->
+</div><!-- end row div -->

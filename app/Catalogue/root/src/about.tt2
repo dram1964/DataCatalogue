@@ -1,0 +1,3 @@
+[% META title = 'About the Metadata Catalogue' %]
+<p>This site is powered by Catalyst, The Perl MVC Framework. The code for this site is freely available on <a href="[% site.url.gitpage %]">Github</a></p>
+<a href="[% site.url.catalyst %]"><img src="[% c.uri_for('/static/images/btn_88x31_powered.png') %]" /></a>

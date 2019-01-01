@@ -1,0 +1,29 @@
+[% META title = "Category2s" %]
+<p class="lead">Category2s</p>
+<form action="[% c.uri_for(c.controller.action_for('add')) %]" method="post">
+<label>Add New Category2:</label>
+<input name="description" type="text" title="Enter Category2 descriptive name" />
+<input name="submit" type="submit" value="submit" />
+</form>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+[%     FOREACH category2 IN category2s %]
+      <tr>
+        <td>[% category2.name %]</td>
+        <td>
+[% IF c.check_user_roles('admin') %]
+<a href="[% c.uri_for(c.controller.action_for('delete'), [category2.id]) %]">delete</a>
+[% END %]
+        </td>
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>

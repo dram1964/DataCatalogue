@@ -1,0 +1,52 @@
+[% META title = "Request Submission Details" %]
+<p>Request ID: [% request.id %]</p>
+<p>Return to <a href="[% c.uri_for(c.controller.action_for('list')) %]">List</a> of Requests</p>
+<p>Add <a href="[% c.uri_for(c.controller.action_for('add_new'), [request.id]) %]">Submission</a> Data</p>
+<p>Flag as <a href="[% c.uri_for(c.controller.action_for('flag_complete'), [request.id]) %]">Complete</a></p>
+
+[% FOR submission IN submissions %]
+<div class="table-responsive">
+  <table class="table table-striped text-left">
+    <caption>Submission</caption>
+  <tbody>
+	<tr><td>Extract Name</td><td>[% submission.project_name %]</td></tr>
+	<tr><td>Extract Project Type</td><td> [% submission.project_type %]</td></tr>
+	<tr><td>Extract Project Location</td><td> [% submission.project_location %]</td></tr>
+	<tr><td>Extract Run Date</td><td> [% submission.extract_run_date %]</td></tr>
+	<tr><td>Extract Output File</td><td> [% submission.extract_output_file %]</td></tr>
+	<tr><td>Extract Output File Location</td><td> [% submission.extract_output_file_location %]</td></tr>
+	<tr><td>Extract Delivery Method</td><td> [% submission.extract_delivery_method %]</td></tr>
+	<tr><td>Packages:</td><td> 
+	[% FOR package IN submission.packages %]
+	  <ol>
+	    <li><a href="#[% package.package_name %].packages">[% package.package_name %]</a></li>
+	  </ol>
+	</td></tr>
+    [% END %]
+  </tbody>
+  </table>
+</div>
+[% END %]
+
+[% FOR package IN submission.packages %]
+<div id="[% package.package_name %].packages">
+[% row_count = 0 %]
+    [% FOR extract IN package.extracts %]
+	[% row_count = row_count + 1 %]
+    <div class="table-responsive">
+      <table class="table table-striped text-left">
+        <caption>Data Extract ([% row_count %]) for [% package.package_name %]</caption>
+        <tbody>
+	    <tr><td>Source Name</td><td> [% extract.source_name %]</td></tr>
+	    <tr><td>Source Type</td><td> [% extract.source_type %]</td></tr>
+	    <tr><td>Extract Name</td><td> [% extract.extract_name %]</td></tr>
+	    <tr><td>Extract Query</td><td> [% extract.extract_query %]</td></tr>
+	    <tr><td>Extract Output Location</td><td> [% extract.extract_output_location %]</td></tr>
+	    <tr><td>Extract Output Type</td><td> [% extract.output_type %]</td></tr>
+	    <tr><td>Extract File Name</td><td> [% extract.filename %]</td></tr>
+        </tbody>
+      </table>
+    </div>
+    [% END %]
+</div>
+[% END %]

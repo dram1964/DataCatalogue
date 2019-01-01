@@ -1,0 +1,43 @@
+[% META title = 'Project Task List' -%]
+<p class="lead">List of outstanding tasks to be completed</p>
+<div class="table-responsive"><!-- begin responsive table -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date Added</th>
+[% IF c.check_user_roles('curator') %]
+        <th>Edit Task</th>
+[% END %]
+[% IF c.check_user_roles('admin') %]
+        <th>Delete Task</th>
+[% END %]
+        <th>Task</th>
+        <th>Assigned To</th>
+        <th>Description</th>
+        <th>Project</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH task IN tasks -%]
+      <tr>
+        <td>[% task.date_added %]</td>
+[% IF c.check_user_roles('curator') %]
+        <td><a href="[% c.uri_for(c.controller.action_for('edit'), [task.id]) %]">Edit</a></td>
+[% END %]
+[% IF c.check_user_roles('admin') %]
+        <td><a href="[% c.uri_for(c.controller.action_for('delete'), [task.id]) %]">Delete</a></t>
+[% END %]
+        <td>[% task.task %]</td>
+        <td>[% task.assigned_to %]</td>
+        <td>[% task.comment %]</td>
+        <td>[% task.project %]</td>
+      <tr>
+[% END %]
+    </thead>
+  </table>
+</div><!-- end responsive table -->
+[% IF c.check_user_roles('curator') %]
+<p>
+<a href="[% c.uri_for(c.controller.action_for('create')) %]">Add New Task</a>
+</p>
+[% END %]

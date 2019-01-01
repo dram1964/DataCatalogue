@@ -1,0 +1,76 @@
+[% IF dataset.id == 1 %]
+[% facts = {
+    population = {
+      ranges = { 
+            '0 to 10 years' = 100000,
+	    '10 to 20 years' = 235000, 
+	    '20 to 30 years' = 501000,
+	    '30 to 40 years' = 600000,
+	    '40 to 50 years' = 838810,
+	    '50 to 60 years' = 738000, 
+	    '60 to 70 years' = 450000
+	}
+    }
+    samples = {types = {
+		'Blood' = 1201978,
+		'Sputum' = 203334,
+		'Urine' = 630981,
+		'Stool' = 551939
+		}
+    }
+    specialties = {
+	'Haematology' = 15339338,
+	'Clinical Biochemistry' = 12345881,
+	'Microbiology' = 5333818,
+	'Virology' = 4123876,
+	'Immunology' = 838356,
+	'Parasitology' = 68383
+    }
+} %]
+[% ELSIF dataset.id == 2 %]
+[% facts = {
+    population = {
+	ranges = { 
+            '0 to 10 years' = 0,
+	    '10 to 20 years' = 0, 
+	    '20 to 30 years' = 51,
+	    '30 to 40 years' = 600,
+	    '40 to 50 years' = 8310,
+	    '50 to 60 years' = 10000, 
+	    '60 to 70 years' = 20000,
+	}
+    }
+    angio = {
+	total = 12000
+    }
+    ecg = {
+	total = 8000
+    }
+    tpt = {
+        total = 36000,
+	ranges = {
+		'0 to 0.01' = 1000,
+		'0.01 to 0.02' = 2000,
+		'0.02 to 0.03' = 3000,
+		'0.03 to 0.04' = 4000,
+		'>0.05' = 26000,
+        }
+    }
+}
+ %]
+[% ELSIF dataset.id == 3 %]
+[% facts = {
+  dashboard = 1
+  hepatitis = [
+    ['hepA', 'male', 25]
+    ['hepA', 'female', 17]
+    ['hepB', 'male', 24]
+    ['hepB', 'female', 18]
+    ['hepC', 'male', 11]
+    ['hepC', 'female', 12]
+    ['hepD', 'male', 15]
+    ['hepD', 'female', 27]
+  ]
+}
+%]
+[% END %]

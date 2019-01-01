@@ -1,0 +1,20 @@
+<script type="text/javascript" src="[% site.url.js %]/json_vh_dashboard.js"> </script>
+<script>
+ var vhData = [% item.fact %];
+</script>
+
+
+<div id="dashboard_div">
+  <div class="row placeholders">
+    <div id="virus_filter_div" class="col-xs-24 col-sm-12 placeholder"> </div>
+    <div id="gender_filter_div" class="col-xs-24 col-sm-12 placeholder"> </div>
+  </div>
+  <div class="row placeholders">
+      <div id="tablechart_div" class="col-xs-8 col-sm-4 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+      </div>
+      <div id="piechart_div" class="col-xs-8 col-sm-4 placeholder"> 
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+      </div>
+  </div>
+</div>

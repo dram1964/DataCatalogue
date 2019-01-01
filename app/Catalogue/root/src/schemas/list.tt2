@@ -1,0 +1,51 @@
+[% META title = 'Database Schemas' %]
+[% IF database %]<p class="lead">Showing Schemas for [% database.name %] Database on [% database.srv.name %] Server</p>
+[% ELSE %]
+<p class="lead">Showing Schemas for all Databases</p>
+[% END %]
+[% IF pager.total_entries && pager.total_entries > 30 %]
+<p>Displaying entries [% pager.first %] - [% pager.last %] of [% pager.total_entries %]. Navigation: &lt;&lt;
+<a href="[% c.request.uri_with({ page => pager.first_page}) %]">First</a>
+<a href="[% c.request.uri_with({ page => pager.previous_page}) %]">Previous</a>
+<a href="[% c.request.uri_with({ page => pager.next_page}) %]">Next</a>
+<a href="[% c.request.uri_with({ page => pager.last_page}) %]">Last</a>
+&gt;&gt;</p>
+[% END %]
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Server</th>
+        <th>Database</th>
+        <th>Schema</th>
+        <th>Tables</th>
+        <th>Description</th>
+        <th>Update Description</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH schema IN schemas %]
+      <tr>
+        <td>[% schema.db.srv.name %]</td>
+        <td>[% schema.db.name %]
+        <td>[% schema.name %]</td>
+        <td><a href="[% c.uri_for(c.controller('Tables').action_for('list_tables'), [schema.sch_id]) %]">List Tables</a></td>
+        <td>[% schema.description %]</td>
+[% IF database %]
+        <td><a href="[% c.uri_for(c.controller.action_for('edit_current'), [schema.sch_id, schema.db_id]) %]">Update Description</a></td>
+[% ELSE %]
+        <td><a href="[% c.uri_for(c.controller.action_for('edit_description'), [schema.sch_id, schema.db_id]) %]">Update Description</a></td>
+[% END %]
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>
+[% IF pager.total_entries && pager.total_entries > 30 %]
+<p>Displaying entries [% pager.first %] - [% pager.last %] of [% pager.total_entries %]. Navigation: &lt;&lt;
+<a href="[% c.request.uri_with({ page => pager.first_page}) %]">First</a>
+<a href="[% c.request.uri_with({ page => pager.previous_page}) %]">Previous</a>
+<a href="[% c.request.uri_with({ page => pager.next_page}) %]">Next</a>
+<a href="[% c.request.uri_with({ page => pager.last_page}) %]">Last</a>
+&gt;&gt;</p>
+[% END %]

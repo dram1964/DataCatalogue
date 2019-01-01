@@ -1,0 +1,48 @@
+    <script type="text/javascript" src="[% site.url.js %]/populationbarchart.js"> </script>
+<script>
+        var populationBar = {};
+	populationBar.myTitle = "Age Distribution";
+        populationBar.id = "populationbarchart";
+        populationBar.ranges = [];
+	populationBar.ranges.push(['Age', 'Population']);
+[% FOREACH range IN facts.population.ranges.keys.sort %]
+	populationBar.ranges.push(
+	  ['[% range %]', [% facts.population.ranges.$range %]]
+	);
+[% END %]
+</script>
+
+<div class="row placeholders">
+            <div class="col-xs-12 col-sm-6 placeholder">
+<h2 class="sub-header">Population</h2>
+[% rangetotal = 0; 
+   FOREACH range IN facts.population.ranges.keys %]
+	[% $rangetotal = $rangetotal + facts.population.ranges.$range;
+   END;
+%]
+<p>Total Subjects: [% $rangetotal | format("%d") %]</p>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Age Range</th>
+        <th>Number </th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH range IN facts.population.ranges.keys.sort %]
+      <tr>
+        <td>[% range %]</td>
+        <td>[% facts.population.ranges.$range %]</td>
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>
+            </div>
+
+            <div id="populationbarchart" class="col-xs-12 col-sm-6 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+            </div>
+</div>

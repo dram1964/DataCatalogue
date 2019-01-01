@@ -1,0 +1,8 @@
+    <script type="text/javascript" src="[% site.url.js %]/orgchart.js"> </script>
+
+<script>
+  var orgchart = [% item.fact %];
+</script>
+<div id="org_chart" placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+</div>

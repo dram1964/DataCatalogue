@@ -1,0 +1,2 @@
+<p>You are already logged-in. To use the requested function you need to first
+<a href="[% c.uri_for('/logout') %]">logout</a>

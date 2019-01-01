@@ -1,0 +1,7 @@
+[% META title = "Add/Edit User" %]
+<p class="lead">Editing User [% user.username %]</p>
+<div class="form-group">
+[% form %]
+</div>
+
+<p><a href="[% c.uri_for(c.controller.action_for('list')) %]">Return to User List</a></p>

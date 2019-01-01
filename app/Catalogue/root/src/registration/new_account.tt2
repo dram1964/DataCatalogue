@@ -1,0 +1,3 @@
+[% META title = "User Registration Form" %]
+<p>Please fill-in the details below</p>
+[% form %]

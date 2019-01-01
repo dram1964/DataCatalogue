@@ -1,0 +1,18 @@
+<script type="text/javascript" 
+  src="[% site.url.js %]/json_tpts.js"> </script>
+<script>
+  var tptFact = [% item.fact %];
+  tptFact.ranges.unshift(['Range', 'Samples']);
+  var title = 'TPT Ranges';
+</script>
+
+<p class="lead">TroponinT Data</p>
+<div id="tpt_dashboard_div" class="row placeholders">
+  <div id="tpt_filter_div" class="col-xs-24 col-sm-12 placeholder"></div>
+  <div id="tpt_tablechart_div" class="col-xs-8 col-sm-4 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+  </div>
+  <div id="tpt_piechart_div" class="col-xs-16 col-sm-8 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+  </div>
+</div>

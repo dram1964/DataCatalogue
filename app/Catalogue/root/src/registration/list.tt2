@@ -1,0 +1,32 @@
+[% META title = "Registration Requests" %]
+<p class="lead">List of Requests for Registration on Data Request System</p>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tbody>
+      <tr>
+        <th>Username</th>
+        <th>Job Title</th>
+        <th>Organisation</th>
+        <th>Request Date</th>
+        <th>Approval Date</th>
+        <th>Actions</th>
+      </tr>
+[%     FOREACH request IN requests %]
+      <tr>
+        <td>[% request.email_address %]</td>
+        <td>[% request.job_title %]</td>
+        <td>[% request.organisation %]</td>
+        <td>[% request.request_date %]</td>
+        <td>[% request.approval_date %]</td>
+        <td>
+[% IF c.check_user_roles('admin') %]
+<a href="[% c.uri_for(c.controller.action_for('review'), [request.email_address]) %]">review</a>
+<a href="[% c.uri_for(c.controller.action_for('delete'), [request.email_address]) %]">delete</a>
+[% END %]
+        </td>
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>

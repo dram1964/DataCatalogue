@@ -1,0 +1,33 @@
+[% META title = "Data Requests with Completed IG Review" %]
+[% USE date %]
+  [% IF data_requests.0 %]
+    <div class="table-responsive">
+      <table class="table table-striped text-left">
+	<caption>List of Data Requests</caption>
+        <thead>
+  	<tr>
+  	<th>Area</th>
+  	<th>Objective</th>
+  	<th>Request Type</th>
+  	<th>Current Request Status</th>
+	<th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+    [% FOREACH request IN data_requests %]
+  	<tr>
+  	<td>[% request.data_handlings.area || 'Not Entered' %]</td>
+  	<td>[% request.data_handlings.objective || 'Not Entered' %]</td>
+  	<td>[% request.request_type.name %]</td>
+  	<td>[% request.status.description %]</td>
+  	<td>
+	    <a href="[% c.uri_for(c.controller.action_for('display_request'), [request.id]) %]">View Request</a>
+	</td>
+  	</tr>
+    [% END %]
+        </tbody>
+      </table>
+    </div>
+  [% ELSE %] 
+  <p class="lead">No current requests with IG Review Completed</p>
+  [% END %]

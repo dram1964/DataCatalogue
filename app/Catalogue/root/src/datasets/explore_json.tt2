@@ -1,0 +1,37 @@
+[% META charts = 1 %]
+
+<h1>Showing Dataset information for [% dataset.name %]</h1>
+<p class="lead">Description: [% dataset.description %]</p>
+[% FOREACH item IN facts %]
+
+  [% IF item.fact_type == 'orgchart' %]
+    [% INCLUDE 'datasets/orgchart.tt2' %]
+  [% END %]
+
+  [% IF item.fact_type == 'population' %]
+    [% INCLUDE 'datasets/json_population.tt2' %]
+  [% END %]
+
+  [% IF item.fact_type == 'sample_types' %]
+    [% INCLUDE 'datasets/json_sample_types.tt2' %]
+  [% END %]
+
+  [% IF item.fact_type == 'sample_specialties' %]
+    [% INCLUDE 'datasets/json_sample_specialties.tt2' %]
+  [% END %]
+
+  [% IF item.fact_type == 'cardio' %]
+    [% INCLUDE 'datasets/json_cardiology.tt2' %]
+  [% END %]
+
+  [% IF item.fact_type == 'tpt' %]
+    [% INCLUDE 'datasets/json_tpt.tt2' %]
+  [% END %]
+
+  [% IF item.fact_type == 'hepatitis' %]
+    [% INCLUDE 'datasets/json_vh.tt2' %]
+  [% END %]
+
+
+[% END %]
+

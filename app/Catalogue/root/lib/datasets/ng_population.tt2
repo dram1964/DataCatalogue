@@ -1,0 +1,28 @@
+<script type="text/javascript">
+var populationData = [% item.fact %]
+</script>
+<div ng-app="datasetsApp"><!-- begin ng-app div -->
+  <div ng-controller="MainCtrl as ctrl"><!-- begin ng-controller div -->
+	<div class="table-responsive"><!-- begin table-responsive div -->
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+		<th>Age Range</th>
+		<th>Number </th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="range in ctrl.fact.ranges">
+		<td>{{range[0]}}</td>
+		<td ng-bind="range[1]"></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div><!-- end table-responsive div -->
+
+<script src="[% site.url.js %]/angular1.3.11/angular.js"></script>
+<script type="text/javascript" src="[% site.url.ng %]/ng_population.js">
+</script>
+
+  </div><!-- end ng-controller div -->
+</div><!-- end ng-app div -->

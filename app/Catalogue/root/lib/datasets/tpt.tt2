@@ -1,0 +1,48 @@
+    <script type="text/javascript" src="[% site.url.js %]/tptpiechart.js"> </script>
+<script>
+        var tptPie = {};
+	tptPie.myTitle = "Result Distribution";
+        tptPie.id = "tptpiechart";
+        tptPie.ranges = [];
+[% FOREACH tpt IN facts.tpt.ranges.keys.sort %]
+	tptPie.ranges.push(
+	  ['[% tpt %]', [% facts.tpt.ranges.$tpt %]]
+	);
+[% END %]
+</script>
+
+<div class="row placeholders">
+    <div class="col-xs-12 col-sm-6 placeholder">
+[% tpttotal = 0; 
+   FOREACH range IN facts.tpt.ranges.keys %]
+	[% $tpttotal = $tpttotal + facts.tpt.ranges.$range;
+   END;
+%]
+<h2 class="sub-header">Troponin T Results</h2>
+<p>Total patients with TPT Results: [% $tpttotal %]</p>
+
+<h2 class="sub-header">TPT Result Ranges</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Result Range</th>
+        <th>Number</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH range IN facts.tpt.ranges.keys.sort %]
+      <tr>
+        <td>[% range %]</td>
+        <td>[% facts.tpt.ranges.$range %]</td>
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>
+    </div>
+
+    <div id="tptpiechart" class="col-xs-12 col-sm-6 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+    </div>
+</div>

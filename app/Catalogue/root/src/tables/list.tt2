@@ -1,0 +1,34 @@
+[% META title = 'Database Tables' %]
+[% IF schema %]<p class="lead">Showing tables for [% schema.db.name %].[% schema.name %] Database.Schema on [% schema.db.server_name_list %]</p>
+[% ELSE %]
+<p class="lead">Tables for all schemas</p>
+[% END %]
+[% IF pager.total_entries && pager.total_entries > 30 %]
+[% PROCESS site/pager %]
+[% END %]
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Table Name</th>
+        <th>Columns</th>
+        <th>Description</th>
+        <th>Update Description</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH table IN tables -%]
+      <tr>
+        <td>[% table.name %]</td>
+        <td><a href="[% c.uri_for(c.controller('Columns').action_for('list_columns'), [table.tbl_id]) %]">List Columns</a></td>
+        <td>[% table.description %]</td>
+[% IF schema %]
+        <td><a href="[% c.uri_for(c.controller.action_for('edit_current'), [table.tbl_id]) %]">Update Description</a></td>
+[% ELSE %]
+        <td><a href="[% c.uri_for(c.controller.action_for('edit_description'), [table.tbl_id]) %]">Update Description</a></td>
+[% END %]
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>

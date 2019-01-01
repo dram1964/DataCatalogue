@@ -1,0 +1,33 @@
+[% META title = "Data Requests" %]
+  <div class="table-responsive">
+    <table class="table table-striped text-left">
+      <caption>List of Data Requests</caption>
+      <thead>
+        <tr>
+  	<th>ID</th>
+  	<th>Request Type</th>
+  	<th>Area</th>
+  	<th>Objective</th>
+	<th>Last Submission</th>
+  	<th>Request Status</th>
+       </tr>
+      </thead>
+      <tbody>
+  [% FOREACH request IN data_requests %]
+        <tr>
+  	<td>[% request.id %]</td>
+  	<td>[% request.request_type.name %]</td>
+	<td>[% request.data_handlings.area %]</td>
+	<td>[% request.data_handlings.objective %]</td>
+        <td>[% request.last_submit_date.strftime('%Y-%m-%d') %]</td>
+	[% SWITCH request.status_id %]
+        [% CASE [1, 2, 5, 6, 8, 9, 10, 11, 12] %]
+  	<td><a href="[% c.uri_for(c.controller.action_for('display'), [request.id]) %]">[% request.status.description %]</a></td>
+        [% CASE [3, 4, 7] %]
+  	<td><a href="[% c.uri_for(c.controller.action_for('review'), [request.id]) %]">[% request.status.description %]</a></td>
+    	[% END %]
+        </tr>
+  [% END %]
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,26 @@
+[% META charts = 1 %]
+[% facts = {}; %]
+[% PROCESS datasets/facts %]
+
+<h1>Showing Dataset information for [% dataset.name %]</h1>
+<p class="lead">Description: [% dataset.description %]</p>
+
+[% IF facts.population.ranges %]
+  [% INCLUDE 'datasets/population.tt2' %]
+[% END %]
+
+[% IF facts.samples.types %]
+  [% INCLUDE 'datasets/samples.tt2' %]
+[% END %]
+
+[% IF facts.angio OR facts.ecg %]
+  [% INCLUDE 'datasets/cardiology.tt2' %]
+[% END %]
+
+[% IF facts.tpt.ranges %]
+  [% INCLUDE 'datasets/tpt.tt2' %]
+[% END %]
+
+[% IF facts.dashboard %]
+  [% INCLUDE 'datasets/vh_dashboard.tt2' %]
+[% END %]

@@ -1,0 +1,27 @@
+[% IF request.verify_data %]
+<div class="panel panel-success">
+[% ELSE %]
+<div class="panel panel-warning">
+[% END %]
+  <div class="panel-heading">Data Requested</div>
+  <div class="panel-body text-left">
+      <div ng-controller="DataRequest as ctrl3">
+    <form action="[% c.uri_for(c.controller.action_for('data_verify'), [request.id]) %]" method="post">
+
+[% FOREACH item IN data_items %]
+  [% lcitem = item.lower %]
+<dl>
+        <dt>[% item.data_category.friendly_category %]:</dt><dd> [% item.detail %]</dd>
+</dl>
+  <div ng-show="ctrl3.edit == 1">
+    <textarea name="[% item.data_category.category %]_comment" ng-model="ctrl3.[% item.data_category.category %]_comment" class="form-control" placeholder="[% item.data_category.category %] comments"></textarea>
+  </div>
+<hr>
+[% END %]
+	<input type="button" class="btn btn-primary" ng-click="ctrl3.addComments()" ng-show="ctrl3.edit == 0" value="Add Comments">
+	<input type="button" class="btn btn-primary" ng-click="ctrl3.addComments()" ng-show="ctrl3.edit == 1" value="Hide Comments">
+        <input type="submit" class="btn btn-primary" value="Submit Comments">
+    </form>
+      </div><!-- end DataRequest controller div -->
+  </div><!-- end panel-body -->
+</div><!-- end panel -->

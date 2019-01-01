@@ -1,0 +1,28 @@
+[% META title = "Key Production Environments" %]
+<p class="lead">Key Production Environments</p>
+<form action="[% c.uri_for(c.controller.action_for('add')) %]" method="post">
+<label>Add New KPE:</label>
+<input name="name" type="text" title="Enter KPE descriptive name" />
+<input name="submit" type="submit" value="submit" />
+</form>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tbody>
+      <tr>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+[%     FOREACH kpe IN kpes %]
+      <tr>
+        <td>[% kpe.name %]</td>
+        <td>
+[% IF c.check_user_roles('admin') %]
+<a href="[% c.uri_for(c.controller.action_for('delete'), [kpe.id]) %]">delete</a>
+[% END %]
+        </td>
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,29 @@
+[% META title = "ERIDs" %]
+<p class="lead">ERIDs</p>
+<form action="[% c.uri_for(c.controller.action_for('add')) %]" method="post">
+<label>Add New ERID:</label>
+<input name="name" type="text" title="Enter ERID descriptive name" />
+<input name="submit" type="submit" value="submit" />
+</form>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+[%     FOREACH erid IN erids %]
+      <tr>
+        <td>[% erid.name %]</td>
+        <td>
+[% IF c.check_user_roles('admin') %]
+<a href="[% c.uri_for(c.controller.action_for('delete'), [erid.id]) %]">delete</a>
+[% END %]
+        </td>
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>

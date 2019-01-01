@@ -1,0 +1,15 @@
+
+	  <div class="form-group" ng-show="ctrl.data.identifiable[% type %] == 1">
+<label>Please select all identifiers required:</label>
+[% FOREACH pt IN pt_identifiers %]
+<br>
+<input type="checkbox" name="identifiers[% type %]" ng-checked="ctrl.data.identifiers.[% pt.value %]" value="[% pt.value %]">[% pt.description %]</input>
+[% END %]
+<br>
+	  </div><!-- end form-group -->
+        <div class="form-group" ng-show="ctrl.data.identifiable[% type %] == 1">
+<label>Reason for Requested PID</label>
+<p>Please explain why each requested personal identifier is essential for this request</p>
+<textarea name="pidJustify[% type %]" ng-model="ctrl.data.pidJustify[% type %]"
+	class="form-control"></textarea>
+        </div><!-- end form-group -->

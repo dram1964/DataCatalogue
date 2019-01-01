@@ -1,0 +1,6 @@
+[% IF c.controller.action_for('search') && template.name.match('list') %]
+  <form class="navbar-form navbar-right">
+    <input type="text" class="form-control" placeholder="Search..." name="search">
+    <input type="submit" value="submit" hidden=1 formaction="[% c.uri_for(c.controller.action_for('search')) %]">
+  </form>
+[% END %]

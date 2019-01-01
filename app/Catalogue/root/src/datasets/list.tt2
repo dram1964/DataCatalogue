@@ -1,0 +1,30 @@
+[% META title="Catalogue Datasets" %]
+<p class="lead">This page contains a list of datasets available for research</p>
+[% IF c.check_user_roles('curator') %]
+<p><a href="[% c.uri_for(c.controller.action_for('add')) %]">Add new Dataset</a></p>
+[% END %]
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH dataset IN datasets %]
+      <tr>
+        <td>[% dataset.name %]</td>
+        <td>
+[% IF c.user.has_role('curator') %]
+	<a href="[% c.uri_for(c.controller.action_for('edit'), [dataset.id]) %]">Edit</a>
+[% END %]
+	<a href="[% c.uri_for(c.controller.action_for('explore_json'), [dataset.id]) %]">Explore</a>
+        </td>
+        <td>[% dataset.description %]</td>
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>

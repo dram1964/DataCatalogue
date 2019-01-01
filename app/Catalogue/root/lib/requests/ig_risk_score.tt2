@@ -1,0 +1,22 @@
+<script type="text/javascript">
+  var rs = [% risk_scores.json  %];
+</script>
+<div ng-app="igadmin">
+  <div ng-controller="ScoreCard as sc">
+	<div class="table-responsive">
+	  <table class="table table-striped text-left">
+	    <caption>Risk Scores</caption>
+	    <thead>
+	      <tr> <th>Category</th> <th>Score</th> </tr>
+	    </thead>
+	    <tbody>
+    <tr ng-repeat="risk in sc.risks">
+	      <td>{{risk.category.value}}</td><td ng-style="{'background-color': risk.col }"> {{risk.score}} </td>
+    </tr><!-- end ng-repeat -->
+	    </tbody>
+	  </table>
+	</div>
+   </div><!-- end ng-controller -->
+</div><!-- end ng-app -->
+<script src="[% site.url.js %]/angular1.3.11/angular.js"></script>
+<script type="text/javascript" src="[% site.url.ng %]/ng_igdisplay.js"> </script>

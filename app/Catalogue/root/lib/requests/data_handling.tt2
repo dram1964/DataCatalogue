@@ -1,0 +1,48 @@
+[% IF dh %]
+<div class="table-responsive">
+  <table class="table table-striped text-left">
+    <caption>Data Handling</caption>
+    <thead>
+      <tr> <th>Data Item</th> <th>Data Requested</th> </tr>
+    </thead>
+    <tbody> 
+  [% IF dh.request.request_type_id == 1 %]
+    [% IF dh.rec_approval == 1 %]
+    <tr><td>REC Approval</td>
+    <td>Yes</td></tr>
+    <tr><td>REC Approval Number</td>
+    <td>[% dh.rec_approval_number || "&nbsp;" %]</td></tr>
+    [% ELSE %]
+    <tr><td>REC Approval</td>
+    <td>No</td></tr>
+    [% END %]
+  [% END %]
+    <tr><td>Patient Selection</td><td>[% dh.population || "&nbsp;" %]</td></tr>
+    <tr><td>Identifiable Data Required</td>
+  [% IF dh.identifiable == 0 %]
+    <td>No</td></tr>
+  [% ELSIF dh.identifiable == 1 %]
+    <td>Yes</td></tr>
+    <tr><td>Identifiers</td><td>[% identifiers.join(", ") || "&nbsp;" %]</td></tr>
+    <tr><td>Justification for PID</td><td>[% dh.pid_justify || "&nbsp;" %]</td></tr>
+    <tr><td>Legal basis for PID</td><td>[% dh.legal_basis.description || "&nbsp;" %]</td></tr>
+    <tr><td>Identifiers Disclosed to</td>
+    [% IF dh.disclosure == 1 %]
+    <td>[% dh.disclosure_to || "&nbsp;" %]</td></tr>
+    [% ELSE %]
+    <td>None</td></tr>
+    [% END %]
+    <tr><td>Disclosure Contractual</td>
+    [% IF dh.disclosure == 1 %]
+    <td>[% dh.disclosure_contract || "&nbsp;" %]</td></tr>
+    [% ELSE %]
+    <td>None</td></tr>
+    [% END %]
+    <tr><td>Data Published to</td><td>[% dh.publish_to || "&nbsp;" %]</td></tr>
+  [% ELSE %]
+    <td>No Response</td></tr>
+  [% END %]
+    </tbody>
+  </table>
+</div>
+[% END %]

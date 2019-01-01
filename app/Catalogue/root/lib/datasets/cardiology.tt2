@@ -1,0 +1,29 @@
+<div class="row placeholders">
+    <div class="col-xs-24 col-sm-12 placeholder">
+<h2 class="sub-header">Cardiology Data</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Domain</th>
+        <th>Number</th>
+      </tr>
+    </thead>
+    <tbody>
+[% IF facts.angio %]
+      <tr>
+        <td>Total patients with Angiography Data</td>
+        <td>[% facts.angio.total %]</td>
+      <tr>
+[% END %]
+[% IF facts.ecg %]
+      <tr>
+        <td>Total patients with Echocardiogram Data</td>
+        <td>[% facts.ecg.total %]</td>
+      <tr>
+[% END %]
+    </tbody>
+  </table>
+</div>
+    </div>
+</div>

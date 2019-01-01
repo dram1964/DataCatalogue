@@ -1,0 +1,7 @@
+[% META title = "Add dataset" %]
+<p class="lead">Editing Description for the [% dataset.name %] dataset</p>
+<div class="form-group">
+[% form %]
+</div>
+
+<p><a href="[% c.uri_for(c.controller.action_for('list')) %]">Return to Dataset List</a></p>

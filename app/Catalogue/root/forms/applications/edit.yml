@@ -1,0 +1,58 @@
+indicator: submit
+elements:
+    - type: Text
+      name: application_name
+      label: Application Name
+      attributes:
+        title: Enter Application Name
+        class: form-control
+        autofocus: 1
+      constraints:
+        - type: Length
+          min: 5
+          max: 100
+          message: must be between 5 and 100 characters long
+        - Required
+
+    - type: Textarea
+      name: application_description
+      label: Application Description
+      attributes:
+        title: Enter Application Description
+        class: form-control
+        autofocus: 1
+
+    - type: Select
+      name: kpe_class
+      label: KPE Class
+      attributes:
+        class: form-control
+
+    - type: Select
+      name: category2
+      label: Subcategory
+      attributes:
+        class: form-control
+
+    - type: Select
+      name: supplier
+      label: Supplier
+      attributes:
+        class: form-control
+
+    - type: Select
+      name: erid
+      label: ERID
+      attributes:
+        class: form-control
+
+    - type: Submit
+      name: submit 
+      value: Submit
+      attributes:
+        class: btn btn-primary
+
+
+filter:
+    - TrimEdges
+    - HTMLEscape

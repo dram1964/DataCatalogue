@@ -1,0 +1,33 @@
+indicator: submit
+elements:
+    - type: Text
+      name: system_name
+      label: System Name
+      attributes:
+        title: Enter System Name
+        class: form-control
+        autofocus: 1
+      constraints:
+        - type: Length
+          min: 5
+          max: 100
+          message: must be between 5 and 100 characters long
+        - Required
+
+    - type: Textarea
+      name: system_description
+      label: System Description
+      attributes:
+        title: Enter System Description
+        class: form-control
+
+    - type: Submit
+      name: submit 
+      value: Submit
+      attributes:
+        class: btn btn-primary
+
+
+filter:
+    - TrimEdges
+    - HTMLEscape

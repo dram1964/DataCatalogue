@@ -1,0 +1,83 @@
+[% META title = 'Review Registration Request' %]
+<p class="lead">Reviewing Registration Request for: [% request.email_address %]</p>
+<div class="form-group">
+  <form action="[% c.uri_for(c.controller.action_for('create_user_from_request'), [request.email_address]) %]" method="post">
+  <div class="row">
+    <div class="col-md-6">
+	<label for="first_name">First Name</label>
+	<input name="first_name" value="[% request.first_name %]" type="text" class="form-control" />
+    </div>
+    <div class="col-md-6">
+	<label>Last Name</label>
+	<input name="last_name" value="[% request.last_name %]" type="text" class="form-control" />
+    </div>
+    <div class="col-md-6">
+	<label>Email Address</label>
+	<input name="email_address" value="[% request.email_address %]" type="text" value="bob1@example.com" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>Job Title</label>
+	<input name="job_title" value="[% request.job_title %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>Department</label>
+	<input name="department" value="[% request.department %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>Organisation</label>
+	<input name="organisation" value="[% request.organisation %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>Address Line 1</label>
+	<input name="address1" value="[% request.address1 %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>Address Line 2</label>
+	<input name="address2" value="[% request.address2 %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>Address Line 3</label>
+	<input name="address3" value="[% request.address3 %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>Post Code</label>
+	<input name="postcode" value="[% request.postcode %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>City</label>
+	<input name="city" value="[% request.city %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>Telephone</label>
+	<input name="telephone" value="[% request.telephone %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-6">
+	<label>Mobile</label>
+	<input name="mobile" value="[% request.mobile %]" type="text" class="form-control" columns="0" rows="0" />
+    </div>
+    <div class="col-md-12">
+      <fieldset>
+        <legend>Roles</legend>
+        <span class="form-control" title="Roles">
+          <span> <input name="role_user" type="checkbox" value="1" /> <label>user</label> </span>
+	  <span> <input name="role_admin" type="checkbox" value="2" /> <label>admin</label> </span>
+	  <span> <input name="role_verifier" type="checkbox" value="3" /> <label>verifier</label> </span>
+	  <span> <input name="role_requestor" type="checkbox" value="4" /> <label>requestor</label> </span>
+	  <span> <input name="role_igadmin" type="checkbox" value="5" /> <label>ig_admin</label> </span>
+	  <span> <input name="role_extractor" type="checkbox" value="6" /> <label>extractor</label> </span>
+	  <span> <input name="role_extract_approver" type="checkbox" value="7" /> <label>extract_approver</label> </span>
+	</span>
+      </fieldset>
+    </div>
+    <br>
+    <br>
+  <div><!-- end row div -->
+  <div class="row">
+    <div class="col-md-12">
+    [% UNLESS request.approved_by %]
+	<input name="submit" type="submit" value="Approve and Create User" class="btn btn-primary" />
+    [% END %]
+    </div>
+  </div>
+  </form>
+</div><!-- end form group -->

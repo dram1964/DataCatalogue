@@ -1,0 +1,35 @@
+[% IF error_msg %]
+<p>Registration unsuccessful: Please <a href="[% c.uri_for('ng_new') %]">try again</a> or 
+<a href="[% site.administrator.registration_error %]">contact us</a> to report a problem</p>
+[% ELSE %]
+<p>The following details have been successfully submitted to our registration team. Your application will 
+be reviewed we will be in touch to confirm your registration status shortly</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Your Details</div>
+  <div class="panel-body">
+    <div class="row">
+	  <div class="col-md-6">
+	    <dl class="dl-horizontal">
+	      <dt>Username: </dt><dd>[% reg.email_address %]</dd>
+	      <dt>First Name: </dt><dd>[% reg.first_name %]</dd>
+	      <dt>Last Name: </dt><dd>[% reg.last_name %]</dd>
+	      <dt>Email Address: </dt><dd>[% reg.email_address %]</dd>
+	      <dt>Job Title: </dt><dd>[% reg.job_title %]</dd>
+	      <dt>Department: </dt><dd>[% reg.department %]</dd>
+	      <dt>Organisation: </dt><dd>[% reg.organisation %]</dd>
+	      <dt>Address: </dt>
+			<dd>
+		[% reg.address1 %]<br/>
+		[% reg.address2 %]<br/>
+		[% reg.address3 %]<br/>
+		[% reg.city %]<br/>
+		[% reg.postcode %]<br/>
+			</dd>
+	      <dt>Telephone: </dt><dd>[% reg.telephone %]</dd>
+	      <dt>Mobile: </dt><dd>[% reg.mobile %]</dd>
+            </dl>
+	  </div><!-- end column -->
+    </div><!-- end row -->
+  </div><!-- end panel-body -->
+</div><!-- end panel-panel -->
+[% END %]

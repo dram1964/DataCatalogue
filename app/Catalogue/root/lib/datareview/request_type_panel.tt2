@@ -1,0 +1,11 @@
+<div class="panel panel-success">
+  <div class="panel-heading">Request ID: [% request.id %]</div>
+  <div class="panel-body">
+  <dl>
+    <dt class="col-sm-4 text-left">Request Type: </dt>
+    <dd class="col-sm-8 text-left">[% request.request_type.name %]</dd>
+    <dt class="col-sm-4 text-left">Request Type Description: </dt>
+    <dd class="col-sm-8 text-left">[% request.request_type.description %]</dd>
+  </dl>
+  </div><!-- end panel-body -->
+</div><!-- end panel -->

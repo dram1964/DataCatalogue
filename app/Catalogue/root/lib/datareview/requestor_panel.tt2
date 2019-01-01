@@ -1,0 +1,39 @@
+<div class="panel panel-success">
+  <div class="panel-heading">Requestor Details </div>
+  <div class="panel-body">
+      <dl>
+      <div class="row">
+	<dt class="col-sm-4 text-left">Username:</dt>
+	<dd class="col-sm-8 text-left">[% request.user.email_address %]</dd>
+      </div>
+      <div class="row">
+	<dt class="col-sm-4 text-left">Name:</dt>
+	<dd class="col-sm-8 text-left">[% request.user.first_name %] [% request.user.last_name %]</dd>
+      </div>
+      <div class="row">
+	<dt class="col-sm-4 text-left">Job Title:</dt>
+	<dd class="col-sm-8 text-left">[% request.user.job_title %]</dd>
+      </div>
+      <div class="row">
+	<dt class="col-sm-4 text-left">Department:</dt>
+	<dd class="col-sm-8 text-left">[% request.user.department %]</dd>
+      </div>
+      <div class="row">
+	<dt class="col-sm-4 text-left">Organisation:</dt>
+	<dd class="col-sm-8 text-left">[% request.user.organisation %]<br>
+	    [% request.user.address1 %]<br>
+	    [% request.user.address4 %]<br>
+	    [% request.user.address3 %]<br>
+	    [% request.user.city %]<br>
+	    [% request.user.postcode %]<br>
+	</dd>
+      </div>
+      <div class="row">
+	<dt class="col-sm-4 text-left">Telephone:</dt>
+	<dd class="col-sm-8 text-left">[% request.user.telephone %]<br>
+	    [% request.user.mobile %]
+	</dd>
+      </div>
+      </dl>
+  </div><!-- end panel-body -->
+</div><!-- end panel -->

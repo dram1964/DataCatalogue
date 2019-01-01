@@ -1,0 +1,99 @@
+<div class="row" ng-show="ctrl.data.requestType == [% type %]">
+  <div class="col-lg-12">
+[% IF verify.purpose_user_name %]
+<div class="panel panel-danger">
+[% ELSE %]
+<div class="panel panel-success">
+[% END %]
+      <div class="panel-heading">Purpose of Request </div>
+      <div class="panel-body text-left">
+        <div class="form-group">
+[% IF type == 1 %]
+<label>Research Project Name</label>
+<p>Please enter a short title/name for this Project</p>
+[% ELSIF type == 2 %]
+<label>Clinical Service Area</label>
+<p>Please name the clinical service area for this data request</p>
+[% ELSIF type == 4 %]
+<label>Study Name</label>
+<p>Please provide the name of this study</p>
+[% ELSIF type == 5 %]
+<label>Service Area</label>
+<p>Please name the policy or service area for this data request</p>
+[% ELSIF type == 6 %]
+<label>Academic Area</label>
+<p>Please name the academic area or course name for this data request</p>
+[% END %]
+[% IF verify.area_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.area_comment %] - [% verify.purpose_user_name %]</span></p> 
+[% END %]
+<input type="textarea" name="area[% type %]" ng-model="ctrl.data.area[% type %]"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+
+        <div class="form-group">
+[% IF type == 1 %]
+<label>Research Project Lead</label>
+<p>Please provide name(s) of responsible project lead(s)</p>
+[% ELSIF type == 2 %]
+<label>Clinical Service Lead</label>
+<p>Please name the responsible clinical service lead for this data request</p>
+[% ELSIF type == 4 %]
+<label>Study Lead</label>
+<p>Please name the responsible project lead for this study</p>
+[% ELSIF type == 5 %]
+<label>Service Lead</label>
+<p>Please name the responsible service lead for this data request</p>
+[% ELSIF type == 6 %]
+<label>Academic Lead</label>
+<p>Please name the responsible academic lead this data request</p>
+[% END %]
+[% IF verify.responsible_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.responsible_comment %] - [% verify.purpose_user_name %]</span></p> 
+[% END %]
+<input type="textarea" name="responsible[% type %]" ng-model="ctrl.data.responsible[% type %]"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+
+        <div class="form-group">
+<label>Responsible Organisation</label>
+<p>Please provide name(s) of responsible organisation(s) for this project</p>
+[% IF verify.organisation_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.organisation_comment %] - [% verify.purpose_user_name %]</span></p> 
+[% END %]
+<input type="textarea" name="organisation[% type %]" ng-model="ctrl.data.organisation[% type %]"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+
+        <div class="form-group">
+[% IF type == 1 %]
+<label>Objective(s) of the Study</label>
+[% ELSIF type == 2 OR type == 4 OR type == 6 %]
+<label>Objective(s) prompting this Data Request</label>
+[% ELSIF type == 5 %]
+<label>UCLH Organisational Plan or Objective</label>
+<p>Please name which UCLH organisational plan or objective this data is being requested for:</p>
+[% END %]
+[% IF verify.objective_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.objective_comment %] - [% verify.purpose_user_name %]</span></p> 
+[% END %]
+<textarea name="objective[% type %]" ng-model="ctrl.data.objective[% type %]"
+	class="form-control"></textarea>
+        </div><!-- end form-group -->
+
+        <div class="form-group">
+[% IF type == 1 %]
+<label>Potential Benefits of the Study</label>
+[% ELSE %]
+<label>Potential Benefits of Processing the Data</label>
+[% END %]
+<p>Please indicate the potential benefits that could result from processing the requested data</p>
+[% IF verify.benefits_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.benefits_comment %] - [% verify.purpose_user_name %]</span></p> 
+[% END %]
+<textarea name="benefits[% type %]" ng-model="ctrl.data.benefits[% type %]" class="form-control"></textarea>
+        </div><!-- end form-group -->
+      </div><!-- end panel-body div -->
+    </div><!-- end panel-panel div -->
+  </div><!-- end col-lg-12 div -->
+</div><!-- end row div -->

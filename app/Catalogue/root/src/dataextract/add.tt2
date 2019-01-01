@@ -1,0 +1,55 @@
+[% META title = "Add Submission Data" %]
+<div ng-app="submission">
+  <div ng-controller="MainCtrl as ctrl">
+    <form name="newSubmission" ng-submit="ctrl.submit()" method="post" action="[% c.uri_for(c.controller.action_for('add_submission'), [request.id]) %]">
+        <div class="form-group">
+<label>Project Name</label>
+<input type="text" name="projectName" ng-model="ctrl.projectName"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+        <div class="form-group">
+<label>Project Type</label>
+<input type="text" name="projectType" ng-model="ctrl.projectType"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+        <div class="form-group">
+<label>Project Location</label>
+<input type="text" name="projectLocation" ng-model="ctrl.projectLocation"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+        <div class="form-group">
+<label>Extract Run Date</label>
+<input type="date" name="extractRunDate" ng-model="ctrl.extractRunDate"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+        <div class="form-group">
+<label>Extract Output File</label>
+<input type="text" name="extractOutputFile" ng-model="ctrl.extractOutputFile"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+        <div class="form-group">
+<label>Extract Output File Location</label>
+<input type="text" name="extractOutputFileLocation" ng-model="ctrl.extractOutputFileLocation"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+        <div class="form-group">
+<label>Extract Delivery Method</label>
+<input type="text" name="extractDeliveryMethod" ng-model="ctrl.extractDeliveryMethod"
+	class="form-control"></input>
+        </div><!-- end form-group -->
+
+
+
+        <div class="row">
+	  <div class="col-md-12">
+	    <button type="submit" value="submit" name="Submit">Submit</button>
+	  </div><!-- end column -->
+        </div><!-- end row -->
+
+
+    </form>
+  </div><!-- end ng-controlller -->
+</div><!-- end ng-app -->
+
+<script src="[% site.url.js %]/angular1.3.11/angular.js"></script>
+<script type="text/javascript" src="[% site.url.ng %]/ng_submission.js">

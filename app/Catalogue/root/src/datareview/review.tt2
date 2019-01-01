@@ -1,0 +1,49 @@
+[% META title = 'Review Data Request' %]
+[% USE JSON %]
+[% no_response = '<span class="alert-danger">No Response</span>' %]
+[% IF verify %]
+<script type="text/javascript">
+  var verify = [% verify.json %];
+</script>
+[% END %]
+
+<p class="no-print">Return to <a href="[% c.uri_for(c.controller.action_for('list')) %]">List</a> of Requests</p>
+
+<div ng-app="datareview">
+[% INCLUDE datareview/request_type_panel.tt2 %]
+[% INCLUDE datareview/requestor_panel.tt2 %]
+
+[% USE JSON %]
+[% IF risk_scores.0 %]
+[% PROCESS requests/ig_risk_score.tt2 %]
+[% END %]
+
+
+[% IF dh %]
+
+  [% INCLUDE datareview/request_purpose_panel.tt2 %]
+
+
+  [% INCLUDE datareview/data_handling_panel.tt2 %]
+  [% INCLUDE datareview/data_manage_panel.tt2 %]
+
+  [% INCLUDE datareview/data_requested.tt2 %]
+
+[% END %]
+[% IF request.status_id == 4 || request.status_id == 3 || request.status_id == 7 %]
+<form action="[% c.uri_for(c.controller.action_for('request_user_review'),[request.id ]) %]" >
+    <input type="submit" class="btn btn-primary" value="Request User Review">
+</form>
+<hr>
+<form action="[% c.uri_for(c.controller.action_for('request_ig_review'),[request.id ]) %]" >
+    <input type="submit" class="btn btn-primary" value="Request IG Review">
+</form>
+[% END %]
+[% IF request.status_id == 5 || request.status_id == 6 %]
+<form action="[% c.uri_for(c.controller.action_for('enable_review'),[request.id ]) %]" >
+    <input type="submit" class="btn btn-primary" value="Enable Review">
+</form>
+[% END %]
+</div><!-- end ng-app div -->
+<script src="[% site.url.js %]/angular1.3.11/angular.js"></script>
+<script type="text/javascript" src="[% site.url.ng %]/ng_review.js"> </script>

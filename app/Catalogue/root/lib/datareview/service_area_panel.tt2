@@ -1,0 +1,23 @@
+[% IF request.approval_service %]
+<div class="panel panel-success">
+[% ELSE %]
+<div class="panel panel-warning">
+[% END %]
+  <div class="panel-heading">Service Area: [% dh.area %]</div>
+  <div class="panel-body">
+	<p>Service Objective: [% dh.objective %]</p>
+        <p>Expected Benefits: [% dh.benefits %]</p>
+	<form action="[% c.uri_for(c.controller.action_for('service_approve'), [request.id]) %]" method="post">
+	<div class="row">
+	  <label>Service Area Authorisation</label>
+	  <select name="serviceAuth">
+	    <option value="0"[% IF request.approval_service.service_auth <= 1 %] selected [% END %]>&nbsp;</option>
+	    <option value="1"[% IF request.approval_service.service_auth == 1 %] selected [% END %]>Service Lead</option>
+	    <option value="2"[% IF request.approval_service.service_auth == 2 %] selected [% END %]>Clinical Lead</option>
+	  </select>
+	</div><!-- end row -->
+
+          <input type="submit" name="submit" value="Update">
+	</form>
+  </div><!-- end panel-body -->
+</div><!-- end panel -->

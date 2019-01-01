@@ -1,0 +1,63 @@
+[% META title = "Record Data Extract Details" %]
+<p>Request ID: [% request.id %]</p>
+<p>Requested by: [% request.user.username %]</p>
+[% 
+submissions => [{
+    project_type = 'SSIS',
+    project_name = 'HIC_ACS_Deidentified',
+    project_location = 'Upathsql: d:\pathreports\SSAS\Projects',
+    packages	= [
+	{
+	package_name = 'Deidentified_Plain_Data.dtsx',
+	data_sources = [
+	    {
+	    source_type	= 'SQL Server',
+	    source_name = 'Upathsql.HIC',
+	    },
+	],
+	extracts => [
+	    {
+	    extract_name  => 'Biochemistry Data',
+	    extract_query => 'select t1.deid, t2.testcode, Pathreports.Winpath.ufn_numeric_or_greater_than_result(t2.result) result, t2.units, t2.rangelo, t2.rangehi, DATEADD(DAY, 33, t2.collectdate) collect_date_skewed, t2.collecttime
+from ACS.tpt_candidates_lookup t1
+join ACS.results_combined t2 on t1.ptnumber = t2.ptnumber
+order by labno, testcode, sort_order',
+	    extract_output_location => 'Upathsql: d:\\pathreports\\data\\HIC\\ACS\\deidentified_extract\\',
+	    output_type		=> 'CSV: field separator: "comma", text qualifier: "double-quote", include header row, code page 1252, locale en-gb',
+	    filename		=> 'biochemistry_data.csv',
+	    },
+	],
+	},
+    ],
+    extract_run_date = '2018-02-14',
+    extract_output_file	= 'hic_acs.zip',
+    extract_output_file_location	= 'Upathsql: D:\pathreports\data\hic\acs\deidentified_extract',
+    extract_delivery_method		= 'file upload to https://www.ucl.ac.uk/dropbox for collection by s.denaxas@ucl.ac.uk within 10 days of upload',
+}] 
+%]
+
+[% FOR submission IN submissions %]
+<h1>Submission Name: [% submission.project_name %]</h1>
+<p>Submission Type: [% submission.project_type %]</p>
+<p>Submission Location: [% submission.project_location %]</p>
+<p>Submission Run Date: [% submission.extract_run_date %]</p>
+<p>Submission Output File: [% submission.extract_output_file %]</p>
+<p>Submission Output File Location: [% submission.extract_output_file_location %]</p>
+<p>Submission Delivery Method: [% submission.extract_delivery_method %]</p>
+    [% FOR package IN submission.packages %]
+	<h2>Package:  [% package.package_name %]</h2>
+	[% FOR source IN package.data_sources %]
+	    <h3>Data Sources</h3>
+	    <p>Source Name: [% source.source_name %]</p>
+	    <p>Source Type: [% source.source_type %]</p>
+	[% END %]
+	[% FOR extract IN package.extracts %]
+	    <h3>Extracts</h3>
+	    <p>Extract Name: [% extract.extract_name %]</p>
+	    <p>Extract Query: [% extract.extract_query %]</p>
+	    <p>Extract Output Location: [% extract.extract_output_location %]</p>
+	    <p>Extract Output Type: [% extract.output_type %]</p>
+	    <p>Extract File Name: [% extract.filename %]</p>
+	[% END %]
+    [% END %]
+[% END %]

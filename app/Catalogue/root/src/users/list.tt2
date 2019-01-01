@@ -1,0 +1,34 @@
+[% META title = 'User Maintenance' %]
+<p class="lead">Current Metadata Catalogue Users</p>
+[% IF pager.total_entries && pager.total_entries > 30 %]
+[% PROCESS site/pager %]
+[% END %]
+<a href="[% c.uri_for(c.controller.action_for('add')) %]">Add User</a>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Active</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH user IN users %]
+      <tr>
+        <td>[% user.username %]
+		<a href="[% c.uri_for(c.controller.action_for('edit'),[user.id]) %]">Edit</a>
+		<a href="[% c.uri_for(c.controller.action_for('delete'),[user.id]) %]">Delete</a>
+        </td>
+        <td>[% user.email_address %]</td>
+        <td>[% user.first_name %]</td>
+        <td>[% user.last_name %]</td>
+        <td>[% user.active %]</td>
+
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>

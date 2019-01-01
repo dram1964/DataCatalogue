@@ -1,0 +1,20 @@
+	  <div class="form-group" ng-show="ctrl.data.identifiable[% type %] == 1">
+<label>Legal Basis for Requesting Patient Identifiers</label>
+<p>Under the GDPR legislation, access to data that can be used to identify an individual person or persons, must have a legal basis. Please choose the correct, most relevant, legal basis from the list below:</p>
+[% IF type == 1;
+	ids = [1,2] %]
+[% ELSIF type == 2;
+	ids = [1,2,3] %]
+[% ELSE;
+	ids = [1,2,3,4,5,6] %]
+[% END %]
+[% FOREACH lb IN legal_basis %]
+    [% FOREACH id IN ids %]
+        [% IF id == lb.id %]
+            <label class="radio-inline"><input type="radio" ng-model="ctrl.data.legalBasis[% type %]" name="legalBasis[% type %]" value="[% lb.id %]">[% lb.description %]</label>
+<br>
+        [% END %]
+    [% END %]
+[% END %]
+
+	  </div><!-- end form-group -->

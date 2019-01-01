@@ -1,0 +1,6 @@
+[% META title = "Edit Catalogue System" %]
+<div class="form-group">
+[% form %]
+</div>
+
+<p><a href="[% c.uri_for(c.controller.action_for('list')) %]">Return to System List</a></p>

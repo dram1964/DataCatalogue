@@ -1,0 +1,33 @@
+<div class="table-responsive">
+  <table class="table table-striped text-left">
+    <caption>Requestor Details</caption>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Job Title</th>
+        <th>Department</th>
+        <th>Organisation</th>
+        <th>Telephone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>[% request.user.email_address %]</td>
+        <td>[% request.user.first_name %] [% request.user.last_name %]</td>
+        <td>[% request.user.job_title %]</td>
+        <td>[% request.user.department %]</td>
+        <td>[% request.user.organisation %]
+	[% IF request.user.address1 %]<br>[% request.user.address1 %][% END %]
+	[% IF request.user.address2 %]<br>[% request.user.address2 %][% END %]
+	[% IF request.user.address3 %]<br>[% request.user.address3 %][% END %]
+	[% IF request.user.city %]<br>[% request.user.city %][% END %]
+	[% IF request.user.postcode %]<br>[% request.user.postcode %][% END %]
+        </td>
+	<td>[% IF request.user.telephone %][% request.user.telephone %]<br>[%END %]
+	    [% request.user.mobile %]
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

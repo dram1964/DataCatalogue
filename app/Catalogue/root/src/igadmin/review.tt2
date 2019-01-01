@@ -1,0 +1,96 @@
+[% META title = 'View IG Approval Request' %]
+[% USE JSON %]
+[% IF risk_scores.0 %]
+<script type="text/javascript">
+  var rs = [% risk_scores.json  %];
+</script>
+[% ELSE %]
+<script type="text/javascript">
+  var rs = [];
+</script>
+[% END %]
+<p class="lead text-left">Reviewing Data Request ID: [% request.id %]</p>
+<p>Return to <a href="[% c.uri_for(c.controller.action_for('list')) %]">List</a> of Requests</p>
+<div ng-app="igadmin">
+  <div ng-controller="ScoreCard as sc">
+    <div ng-repeat="risk in sc.risks">
+    <select class="form-control" name="{{risk.category.name}}" ng-model="risk.category.value">
+  [% FOREACH rc IN risk_categories %]
+	<option value="[% rc.name %]">[% rc.name %]</option>
+  [% END %]
+    </select>
+    <div class="row form-group text-left">
+	<div class="col-md-2">
+	<label>Risk Impact</label>
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.rating.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.rating.value" value=1>1 - Negligible
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.rating.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.rating.value" value=2>2 - Minor
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.rating.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.rating.value" value=3>3 - Moderate
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.rating.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.rating.value" value=4>4 - Major
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.rating.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.rating.value" value=5>5 - Catastrophic
+	</div><!-- end col div -->
+    </div><!-- end form-group/row div -->
+    <div class="row form-group text-left">
+	<div class="col-md-2">
+	<label>Risk Likelihood</label>
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.likely.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.likely.value" value=1>1 - Rare
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.likely.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.likely.value" value=2>2 - Unlikely
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.likely.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.likely.value" value=3>3 - Possible
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.likely.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.likely.value" value=4>4 - Likely
+	</div><!-- end col div -->
+	<div class="col-md-2">
+	<input type="radio" name="{{risk.likely.name}}" ng-click="sc.updateScore(risk)" ng-model="risk.likely.value" value=5>5 - Certainty
+	</div><!-- end col div -->
+    </div><!-- end form-group/row div -->
+    <div class="row form-group">
+	<label>Risk Score</label>
+	<input type="text" name="{{risk.name}}" ng-model="risk.score" ng-style="{'background-color':risk.col}">
+    </div><!-- end form-group/row div -->
+    <div class="row">
+    </div><!-- end row div -->
+    </div><!-- end ng-repeat -->
+    <div>
+    </div>
+  <form class="row" action="[% c.uri_for(c.controller.action_for('update_score'), [request.id ]) %]" method="post">
+    <div ng-repeat="r in sc.risks">
+	<input type="text" name={{r.name}} hidden ng-model="r.score">
+	<input type="text" name="{{r.category.name}}" hidden ng-model="r.category.value">
+	<input type="text" name="{{r.rating.name}}" hidden ng-model="r.rating.value">
+	<input type="text" name="{{r.likely.name}}" hidden ng-model="r.rating.value">
+    </div>
+        <input class="btn btn-primary" type="button" ng-click="sc.addRisk()" value="Add Next Risk">
+	<input class="btn btn-primary" type="submit" value="Submit Scores">
+  </form>
+[% IF request.status_id == 6 %]
+<form action="[% c.uri_for(c.controller.action_for('complete_review'),[request.id ]) %]" >
+    <input type="submit" class="btn btn-primary" value="IG Review Completed">
+</form>
+[% END %]
+  </div><!-- end ng-controller div -->
+</div><!-- end ng-app div -->
+
+[% PROCESS requests/requestor.tt2 %]
+[% PROCESS requests/data_purpose.tt2 %]
+[% PROCESS requests/data_handling.tt2 %]
+[% PROCESS requests/data_manage.tt2 %]
+[% PROCESS requests/data_requested.tt2 %]
+
+<script src="[% site.url.js %]/angular1.3.11/angular.js"></script>
+<script type="text/javascript" src="[% site.url.ng %]/ng_igreview.js"> </script>

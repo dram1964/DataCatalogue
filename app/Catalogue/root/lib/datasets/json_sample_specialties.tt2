@@ -1,0 +1,18 @@
+<script type="text/javascript" 
+  src="[% site.url.js %]/json_sample_specialties.js"> </script>
+<script>
+  var sampleSpecFact = [% item.fact %];
+  sampleSpecFact.specialties.unshift(['Specialty', 'Samples']);
+  var title = 'Pathology Specialties';
+</script>
+
+<p class="lead">Pathology Specialty Data</p>
+<div id="spec_dashboard_div" class="row placeholders">
+  <div id="spec_filter_div" class="col-xs-24 col-sm-12 placeholder"></div>
+  <div id="spec_tablechart_div" class="col-xs-8 col-sm-4 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+  </div>
+  <div id="spec_piechart_div" class="col-xs-16 col-sm-8 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+  </div>
+</div>

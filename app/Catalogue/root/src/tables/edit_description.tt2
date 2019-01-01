@@ -1,0 +1,10 @@
+[% META title = 'Edit Table Description' %]
+<p class="lead">Editing Description for Table: [% table.name %]</p>
+<div class="form-group">
+[% form %]
+</div>
+[% IF schema %]
+<p><a href="[% c.uri_for(c.controller.action_for('list_tables'), [schema.id]) %]">Return to Table List</a></p>
+[% ELSE %]
+<p><a href="[% c.uri_for(c.controller.action_for('list')) %]">Return to Table List</a></p>
+[% END %]

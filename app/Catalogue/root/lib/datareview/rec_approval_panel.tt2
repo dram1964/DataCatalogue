@@ -1,0 +1,29 @@
+    [% IF dh.rec_approval == 1 %]
+    <div class="row">
+      <div class="col-sm-4 text-left">
+	<label>REC Approval Reference Number</label>
+      </div><!-- end column -->
+      <div class="col-sm-4 text-left">
+	<input type="text" name="recApprovalReference" value="[% request.approval_research.rec_approval_ref %]">
+      </div><!-- end column -->
+    </div><!-- end row -->
+      [% IF request.approval_research.rec_approval_file %]
+    <div class="row">
+      <div class="col-sm-4 text-left">
+	<label>REC Approval File</label>
+      </div><!-- end column -->
+      <div class="col-sm-4">
+	<input type="text" name="recApprovalFile" value="[% request.approval_research.rec_approval_file %]" readonly>
+      </div><!-- end column -->
+    </div><!-- end row -->
+      [% ELSE %]
+    <div class="row">
+      <div class="col-sm-4 text-left">
+	<label>REC Approval Letter Upload</label>
+      </div><!-- end column -->
+      <div class="col-sm-4">
+	<input type="file" accept="text" name="recApprovalFile" value="[% request.approval_research.rec_approval_file %]">
+      </div><!-- end column -->
+    </div><!-- end row -->
+      [% END %]
+    [% END %]

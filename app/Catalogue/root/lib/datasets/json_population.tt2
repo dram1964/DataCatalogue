@@ -1,0 +1,15 @@
+<script type="text/javascript" 
+  src="[% site.url.js %]/json_population.js"> </script>
+<script>
+  var fact = [% item.fact %];
+  var populationTitle = 'Age Distribution';
+</script>
+<p class="lead">Population Data</p>
+<div class="row placeholders">
+  <div id="table_chart_div" class="col-xs-8 col-sm-4 placeholder">
+  <p>Here's the population data</p>
+  </div>
+  <div id="population_column_chart_div" class="col-xs-16 col-sm-8 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="400" height="400" class="img-responsive" alt="Generic placeholder thumbnail">
+  </div>
+</div>

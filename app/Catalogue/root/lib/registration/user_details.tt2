@@ -1,0 +1,67 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Account Details</div>
+  <div class="panel-body">
+    <div class="row">
+	<div class="col-md-6">
+	<div class="form-group">
+	  <label for="form_firstname">First Name</label>
+	  <input id="form_firstname" type="text" name="firstName" class="form-control" 
+		ng-model="ctrl.firstName" placeholder="Please enter your first name"
+		ng-maxlength=100
+		required><span class="alert-warning" ng-show="newUser.firstName.$invalid && newUser.firstName.$dirty">Invalid Entry</span>
+
+	</div><!-- end form-group -->
+	</div><!-- end col -->
+	<div class="col-md-6">
+	<div class="form-group">
+	  <label for="form_lastname">Last Name</label>
+	  <input id="form_lastname" type="text" name="lastName" class="form-control" 
+		ng-model="ctrl.lastName" placeholder="Please enter your last name"
+		ng-maxlength=100
+		required ><span class="alert-warning" ng-show="newUser.lastName.$invalid && newUser.lastName.$dirty">Invalid Entry</span>
+
+	</div><!-- end form-group -->
+	</div><!-- end col -->
+	</div>
+    <div class="row">
+	<div class="col-md-6">
+	<div class="form-group">
+	  <label for="form_email1">Email Address</label>
+	  <input id="form_email1" type="email" name="email1" class="form-control" 
+		ng-model="ctrl.email1" placeholder="Please enter your email address"
+		ng-maxlength=100
+		required ><span class="alert-warning" ng-show="newUser.email1.$invalid && newUser.email1.$dirty">Not a valid email address</span>
+	</div><!-- end form-group -->
+	</div><!-- end col -->
+	<div class="col-md-6">
+	<div class="form-group">
+	  <label for="form_email2">Confirm Email Address</label>
+	  <input id="form_email2" type="email" name="email2" class="form-control" 
+		ng-model="ctrl.email2" placeholder="Please re-enter your email address"
+		ng-maxlength=100
+		required ><span class="alert-danger" ng-show="ctrl.checkEmail()">Emails do not match</span>
+	</div><!-- end form-group -->
+	</div><!-- end col -->
+	</div>
+    <div class="row">
+	<div class="col-md-6">
+	<div class="form-group">
+	  <label for="form_password1">Password</label>	      
+		<input id="form_password1" type="password" name="password1" class="form-control" 
+		ng-model="ctrl.password1" placeholder="Password must by at least 6 characters long"
+		ng-minlength=6
+		required ><span class="alert-warning" ng-show="newUser.password1.$invalid && newUser.password1.$dirty">Password must be at least 6 characters long</span>
+	</div><!-- end form-group -->
+	</div><!-- end col -->
+	<div class="col-md-6">
+	<div class="form-group">
+	  <label for="form_password2">Confirm Password</label>
+	  <input id="form_password2" type="password" name="password2" class="form-control" 
+		ng-model="ctrl.password2" placeholder="Please re-enter your password"
+		ng-min-length=6
+		required ><span class="alert-danger" ng-show="ctrl.checkPassword()">Passwords do not match</span>
+	</div><!-- end form-group -->
+	</div><!-- end col -->
+    </div>
+  </div><!-- end panel-body -->
+</div><!-- end panel -->

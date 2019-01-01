@@ -1,0 +1,10 @@
+[% META title = 'Edit Database Description' %]
+<p class="lead">Editing Description for Database: [% database.name %]</p>
+<div class="form-group">
+[% form %]
+</div>
+[% IF system %]
+<p><a href="[% c.uri_for(c.controller.action_for('list_databases'), [system.id]) %]">Return to Database List</a></p>
+[% ELSE %]
+<p><a href="[% c.uri_for(c.controller.action_for('list')) %]">Return to Database List</a></p>
+[% END %]

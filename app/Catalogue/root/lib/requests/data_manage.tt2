@@ -1,0 +1,16 @@
+[% IF dh %]
+<div class="table-responsive">
+  <table class="table table-striped text-left">
+    <caption>Data Management</caption>
+    <thead>
+      <tr> <th>Data Item</th> <th>Data Requested</th> </tr>
+    </thead>
+    <tbody> 
+    <tr><td>Data Processed on</td><td>[% dh.storing || "&nbsp;" %]</td></tr>
+    <tr><td>Data Security Arrangements</td><td>[% dh.secure || "&nbsp;" %]</td></tr>
+    <tr><td>Data Disposal Plan</td><td>[% dh.completion || "&nbsp;" %]</td></tr>
+    <tr><td>Disposal Plan Date</td><td>[% dh.completion_date.ymd || "&nbsp;" %]</td></tr>
+    </tbody>
+  </table>
+</div>
+[% END %]

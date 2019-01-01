@@ -1,0 +1,92 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Organisation Details</div>
+  <div class="panel-body">
+        <div class="row">
+	  <div class="col-md-6">
+	    <div class="form-group">
+	      <label for="form_jobTitle">Job Title</label>
+	      <input id="form_jobTitle" type="text" name="jobTitle" class="form-control" 
+  		ng-model="ctrl.jobTitle" placeholder="Please enter your job title"
+		required 
+		minlength=6><span class="alert-danger" ng-show="newUser.jobTitle.$invalid && newUser.jobTitle.$dirty">Must be at least 6 characters</span>
+
+	    </div>
+	  </div>
+	  <div class="col-md-6">
+	    <div class="form-group">
+	      <label for="form_department">Department</label>
+	      <input id="form_department" type="text" name="department" class="form-control" 
+  		ng-model="ctrl.department" placeholder="Department you work for"
+		required minlength=6><span class="alert-danger" ng-show="newUser.department.$invalid && newUser.department.$dirty">Must be at least 6 characters</span>
+
+	    </div>
+	  </div>
+	  <div class="col-md-6">
+	    <div class="form-group">
+	      <label for="form_organisation">Organisation</label>
+	      <input id="form_organisation" type="text" name="organisation" class="form-control" 
+  		ng-model="ctrl.organisation" placeholder="Organisation you work for"
+		required minlength=3><span class="alert-danger" ng-show="newUser.organisation.$invalid && newUser.organisation.$dirty">Must be at least 3 characters</span>
+
+	    </div>
+	  </div>
+		<br/>
+	  <div class="col-md-6">
+	    <div class="form-group">
+	      <label for="form_address1">Address</label>
+	      <input id="form_address1" type="text" name="address1" class="form-control" 
+  		ng-model="ctrl.address1" placeholder="First line of your organisation address"
+		required minlength=6 ><span class="alert-danger" ng-show="newUser.address1.$invalid && newUser.address1.$dirty">Must be at least 6 characters</span>
+
+	      <label for="form_address2"></label>
+	      <input id="form_address2" type="text" name="address2" class="form-control" 
+  		ng-model="ctrl.address2" placeholder="Second line of your organisation address" required ><span class="alert-danger" ng-show="newUser.address2.$invalid && newUser.address2.$dirty">Not Valid</span>
+
+
+
+	      <label for="form_address3"></label>
+	      <input id="form_address3" type="text" name="address3" class="form-control" 
+  		ng-model="ctrl.address3" placeholder="Third line of your organisation address"
+		><span class="alert-danger" ng-show="newUser.address3.$invalid && newUser.address3.$dirty">Not Valid</span>
+
+	    </div>
+	  </div>
+	  <div class="col-md-6">
+	    <div class="form-group">
+	      <label for="form_postcode">Post Code</label>
+	      <input id="form_postcode" type="text" name="postcode" class="form-control" 
+  		ng-model="ctrl.postcode" placeholder="Post Code"
+		required minlength=7><span class="alert-danger" ng-show="newUser.postcode.$invalid && newUser.postcode.$dirty">Must be at least 7 characters</span>
+
+	    </div>
+	  </div>
+	  <div class="col-md-6">
+	    <div class="form-group">
+	      <label for="form_city">City</label>
+	      <input id="form_city" type="text" name="city" class="form-control" 
+  		ng-model="ctrl.city" placeholder="City"
+		required  minlength=2><span class="alert-danger" ng-show="newUser.city.$invalid && newUser.city.$dirty">Must be at least 2 characters</span>
+
+	    </div>
+	  </div>
+	  <div class="col-md-6">
+	    <div class="form-group">
+	      <label for="form_telephone">Work Telephone Number</label>
+	      <input id="form_telephone" type="text" name="telephone" class="form-control" 
+  		ng-model="ctrl.telephone" placeholder="Telephone Number"
+		required minlength=8><span class="alert-danger" ng-show="newUser.telephone.$invalid && newUser.telephone.$dirty">Must be at least 8 characters</span>
+
+	    </div>
+	  </div>
+	  <div class="col-md-6">
+	    <div class="form-group">
+	      <label for="form_mobile">Mobile Phone</label>
+	      <input id="form_mobile" type="text" name="mobile" class="form-control" 
+  		ng-model="ctrl.mobile" placeholder="Mobile Number"
+		minlength=8><span class="alert-danger" ng-show="newUser.mobile.$invalid && newUser.mobile.$dirty">Must be at least 8 characters</span>
+
+	    </div>
+	  </div>
+	</div><!-- end row div -->
+  </div><!-- end panel-body -->
+</div><!-- end panel -->

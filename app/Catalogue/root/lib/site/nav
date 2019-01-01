@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container-fluid"><!-- begin navbar fluid container -->
+  <div class="navbar-header"><!-- begin navbar header -->
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+          <a class="navbar-brand" href="/welcome">[% site.organisation.name %] [% site.organisation.cri %] [% site.application.name %]</a>
+  </div><!-- end navbar header -->
+  <div id="navbar" class="collapse navbar-collapse"><!-- begin navbar collapse -->
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="[% c.uri_for('/datasets/list') %]">Datasets</a></li>
+[% IF c.user_exists %]
+  [% IF c.user.has_role('curator') %]
+      <li><a href="[% c.uri_for('/applications/list') %]">Applications</a></li>
+      <li><a href="[% c.uri_for('/databases/list') %]">Databases</a></li>
+  [% END %]
+  [% IF c.user.has_role('requestor') %]
+      <li><a href="[% c.uri_for('/datarequest/list') %]">Data Requests</a></li>
+  [% END %]
+  [% IF c.user.has_role('ig_admin') %]
+      <li><a href="[% c.uri_for('/igadmin/list') %]">IG Review</a></li>
+  [% END %]
+  [% IF c.user.has_role('admin') %]
+      <li><a href="[% c.uri_for('/extract_approval/list') %]">Extract Approval</a></li>
+      <li><a href="[% c.uri_for('/dataextract/list') %]">Extracts</a></li>
+  [% END %]
+  [% IF c.user.has_role('verifier') %]
+      <li><a href="[% c.uri_for('/datareview/list') %]">Data Review</a></li>
+  [% END %]
+      <li><a href="[% c.uri_for('/profile/show') %]">My Details</a></li>
+      <li><a href="[% c.uri_for('/logout') %]">Logout</a></li>
+[% ELSE %]
+      <li><a href="[% c.uri_for(c.controller('Registration').action_for('ng_new')) %]">Register</a></li>
+      <li><a href="[% c.uri_for('/login') %]">Login</a></li>
+[% END %]
+    </ul>
+  </div><!-- end navbar collapse -->
+</div><!-- end navbar fluid container -->
+</nav>

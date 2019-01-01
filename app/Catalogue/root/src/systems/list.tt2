@@ -1,0 +1,28 @@
+[% META title = 'System List' %]
+<p class="lead">List of all Systems on the Metadata Catalogue</p>
+[% IF pager.total_entries && pager.total_entries > 30 %]
+[% PROCESS site/pager %]
+[% END %]
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>System Name</th>
+        <th>System Description</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH system IN systems %]
+      <tr>
+        <td>[% system.name | html %]</td>
+        <td>[% system.description | html %]
+<a href="[% c.uri_for(c.controller.action_for('edit'), [system.id]) %]">Edit</a>
+        </td>
+      </tr>
+[% END %]
+      </tbody>
+    </table>
+</div>
+[% IF pager.total_entries && pager.total_entries > 30 %]
+[% PROCESS site/pager %]
+[% END %]

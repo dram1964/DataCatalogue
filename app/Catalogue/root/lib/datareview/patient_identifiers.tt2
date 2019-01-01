@@ -1,0 +1,33 @@
+  [% IF dh.identifiable == 1 %]
+<dl>
+    <dt>Patient Identifiers Requested:</dt>
+    <dd>[% identifiers.join(", ") || no_response %]</dd>
+    <dt>Please explain why each requested personal identifier is essential for this request</dt>
+    <dd>[% dh.pid_justify || no_response %]</dd>
+    <dt>Please choose the correct, most relevant, legal basis for requested identifiers</dt>
+    <dd>[% dh.legal_basis.description || no_response %]</dd>
+    [% IF dh.disclosure == 1 %]	
+	<dt>Data Disclosed to Third-Parties?:</dt>
+        <dd>Yes</dd>
+	<dt>Third-Parties:</dt>
+        <dd>[% dh.disclosure_to || no_response %]</dd>
+	<dt>Contractual Arrangements:</dt>
+	<dd>[% dh.disclosure_contract || no_response %]</dd>
+    [% ELSIF dh.disclosure == 0 %]
+	<dt>Data Disclosed to Third-Parties?:
+	<dd>No</dd>
+    [% ELSE %]
+	<dt>Data Disclosed to Third-Parties?:</dt>
+	<dd><span class="alert-danger">[% no_response %]</span></dd>
+    [% END %]
+</dl>
+  [% ELSE %]
+<dl>
+    <dt>Patient Identifiers Requested:</dt>
+    <dd>None</dd>
+</dl>
+  [% END %]
+  <div ng-show="ctrl2.edit == 1">
+    <textarea name="id_comment" ng-model="ctrl2.id_comment" class="form-control" placeholder="PID comments"></textarea>
+  </div>
+<hr>

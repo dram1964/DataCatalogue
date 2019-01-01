@@ -1,0 +1,91 @@
+[% IF request.verify_purpose %]
+<div class="panel panel-success">
+[% ELSE %]
+<div class="panel panel-warning">
+[% END %]
+  <div class="panel-heading">Request Purpose</div>
+  <div class="panel-body text-left">
+      <div ng-controller="Purpose as ctrl1">
+    <form action="[% c.uri_for(c.controller.action_for('purpose_verify'), [request.id]) %]" method="post">
+<dl>
+[% IF dh.request.request_type_id == 1 %]
+  <dt>Research Project Name:</dt>
+  <dd> [% dh.area || no_response %]</dd>
+[% ELSIF dh.request.request_type_id == 2 %]
+  <dt>Clinical Service Area:</dt>
+  <dd>[% dh.area || no_response %]</dd>
+[% ELSIF dh.request.request_type_id == 4 %]
+  <dt>Study Name:<dt>
+  <dd>[% dh.area || no_response %]</dd>
+[% ELSIF dh.request.request_type_id == 5 %]
+  <dt>Service Area:</dt>
+  <dd>[% dh.area || no_response %]</dd>
+[% ELSIF dh.request.request_type_id == 6 %]
+  <dt>Academic Area:</dt>
+  <dd>[% dh.area || no_response %]</dd>
+[% ELSE %]
+  <dt><span class="error_msg">Unimplemented Request</span>Area:</dt>
+  <dd>[% dh.area %]</dd>
+[% END %]
+</dl>
+  <div ng-show="ctrl1.edit == 1">
+    <textarea name="area_comment" ng-model="ctrl1.area_comment" class="form-control" placeholder="reviewer comments"></textarea>
+  </div>
+<hr>
+[% IF dh.request.request_type_id == 1 %]
+  <dt>Research Project Lead:</dt>
+  <dd> [% dh.responsible || no_response %]</dd>
+[% ELSIF dh.request.request_type_id == 2 %]
+  <dt>Clinical Service Lead:</dt>
+  <dd>[% dh.responsible || no_response %]</dd>
+[% ELSIF dh.request.request_type_id == 4 %]
+  <dt>Study Lead:<dt>
+  <dd>[% dh.responsible || no_response %]</dd>
+[% ELSIF dh.request.request_type_id == 5 %]
+  <dt>Service Lead:</dt>
+  <dd>[% dh.responsible || no_response %]</dd>
+[% ELSIF dh.request.request_type_id == 6 %]
+  <dt>Academic Lead:</dt>
+  <dd>[% dh.responsible || no_response %]</dd>
+[% ELSE %]
+  <dt><span class="error_msg">Unimplemented Request</span>Area:</dt>
+  <dd>[% dh.responsible %]</dd>
+[% END %]
+</dl>
+  <div ng-show="ctrl1.edit == 1">
+    <textarea name="responsible_comment" ng-model="ctrl1.responsible_comment" class="form-control" placeholder="reviewer comments"></textarea>
+  </div>
+<hr>
+<dl>
+  <dt>Responsible Organisation:</dt>
+  <dd>[% dh.organisation || no_response %]</dd>
+</dl>
+  <div ng-show="ctrl1.edit == 1">
+    <textarea name="organisation_comment" ng-model="ctrl1.organisation_comment" class="form-control" placeholder="reviewer comments"></textarea>
+  </div>
+<hr>
+<dl>
+  <dt>Objectives:</dt>
+  <dd>[% dh.objective || no_response %]</dd>
+</dl>
+  <div ng-show="ctrl1.edit == 1">
+    <textarea name="objective_comment" ng-model="ctrl1.objective_comment" class="form-control" placeholder="reviewer comments"></textarea>
+  </div>
+<hr>
+<dl>
+  <dt>Potential Benefits:</dt>
+  <dd>[% dh.benefits || no_response %]</dd>
+</dl>
+  <div ng-show="ctrl1.edit == 1">
+    <textarea name="benefits_comment" ng-model="ctrl1.benefits_comment" class="form-control" placeholder="reviewer comments"></textarea>
+  </div>
+
+<hr>
+	<input type="button" class="btn btn-primary" ng-click="ctrl1.addComments()" ng-show="ctrl1.edit == 0" value="Add Comments">
+	<input type="button" class="btn btn-primary" ng-click="ctrl1.addComments()" ng-show="ctrl1.edit == 1" value="Hide Comments">
+        <input type="submit" class="btn btn-primary" value="Submit Comments">
+    </form>
+
+      </div><!-- end ng-controller -->
+  </div><!-- end panel-body -->
+</div><!-- end panel -->

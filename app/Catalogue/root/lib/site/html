@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[% template.title or site.title %]</title>
+  <link href="[% site.url.css %]/bootstrap.css" rel="stylesheet">
+  <link href="[% site.url.css %]/starter-template.css" rel="stylesheet">
+  <link href="[% site.url.css %]/dashboard.css" rel="stylesheet">
+  <link href="[% site.url.css %]/print.css" rel="stylesheet" media="print" />
+[% IF template.charts %]
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" 
+  src="[% site.url.js %]/load_chart_packages.js"> </script>
+[% END %]
+  
+ </head>
+ <body>
+[% content %]
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="[% site.url.js %]/bootstrap.min.js"></script>
+ </body>
+</html>

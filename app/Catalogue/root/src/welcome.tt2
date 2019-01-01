@@ -1,0 +1,11 @@
+[% META title="BRC Clinical Research Informatics Unit" %]
+<h3>Welcome to the [% site.organisation.shortname %] [% site.organisation.cri %] [% site.application.name %]</h3>
+<div class="well">
+<p>The [% site.application.name %] is a library of clinical datasets held by UCL/UCLH Biomedical Research Centre (BRC). The [% site.application.name %] is managed by the Clinical Research Informatics Unit.</p>
+<p>You can <a href="[% c.uri_for(c.controller('Datasets').action_for('list')) %]">explore</a> the 
+datasets without having to logon to the system.</p>
+<p>If you want to request data from the Data Catalogue you will need to 
+<a href="[% c.uri_for('/login') %]">Login</a> or 
+<a href="[% c.uri_for('/registration/new') %]">Register for an account</a></p>
+</div>
+[% PROCESS site/branding %]

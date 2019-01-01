@@ -1,0 +1,27 @@
+facts = '{
+  "1" : {
+    "population" : { "ranges" : [
+        {"0 to 10 years" : 1000303},
+        {"10 to 20 years" : 235003},
+        {"20 to 30 years" : 501000},
+        {"30 to 40 years" : 838388},
+        {"40 to 50 years" : 877831},
+        {"50 to 60 years" : 3783873},
+        {"60 to 70 years" : 450383},
+        {">70" : 343434}
+      ]
+    }
+  },
+    "sample" : { "ranges" : [
+      {"Blood" : 500050},
+      {"Sputum" : 3836395},
+      {"Urine" : 3839835}
+        ]
+     },
+     "specialties" : [
+       {"haematology" : 3839483},
+       {"clinical biochemistry" : 3838389},
+       {"microbiology" : 3838387},
+       {"virology" : 383838737}
+     ]
+}'

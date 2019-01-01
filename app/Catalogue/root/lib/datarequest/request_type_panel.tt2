@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-success">
+      <div class="panel-heading">Type of Request </div>
+      <div class="panel-body">
+[% IF request && request.status_id > 2 %]
+    <div class="row">
+	    <dl class="dl-horizontal">
+	      <dt>[% request.data.requestTypeName %]: </dt><dd>[% request.data.requestTypeDescription %]</dd>
+	    </dl>
+            <input type="text" ng-model="ctrl.data.requestType" name="requestType" hidden required>
+    </div><!-- end row div -->
+[% ELSE %]
+ 	  <div class="form-group">
+            <div class="radio text-left">
+  [% FOREACH request_type IN request_types %]
+<label>
+<input type="radio" ng-model="ctrl.data.requestType" name="requestType" value="[% request_type.id %]" required
+    [% IF request_type.id == request.data.requestType %] checked [% END %]>
+<strong>[% request_type.name %]</strong> - [% request_type.description %]
+<br/> &nbsp
+</label>
+  [% END %]
+            </div><!-- end radio div -->
+            &nbsp;
+          </div><!-- end form-group div -->
+[% END %]
+      </div><!-- end panel-body div -->
+    </div><!-- end panel-panel div -->
+  </div><!-- end col-lg-12 div -->
+</div>

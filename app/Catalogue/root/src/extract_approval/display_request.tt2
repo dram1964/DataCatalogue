@@ -1,0 +1,49 @@
+[% META title = 'Data Request Details' %]
+<p class="lead text-left">Summary for Data Request ID: [% request.id %]</p>
+<p class="hidden-print">Return to <a href="[% c.uri_for(c.controller.action_for('list')) %]">List</a> of Requests</p>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-success">
+      <div class="panel-heading">Extract Approval</div>
+      <div class="panel-body">
+        <form name="updateApproval" method="post" action="[% c.uri_for(c.controller.action_for('update_approval'), [request.id]) %]">
+ 	  <div class="form-group">
+            <div class="radio text-left">
+        <div class="row">
+	  <div class="col-md-12">
+		<label>
+		<input type="radio"  name="approval" value="9">
+		Approved for Extract<br/> &nbsp
+		</label>
+		<label>
+		<input type="radio"  name="approval" value="10">
+		Data Denied - Request Closed<br/> &nbsp
+		</label>
+		<label>
+		<input type="radio"  name="approval" value="5">
+		Data Denied - User Review Requested<br/> &nbsp
+		</label>
+            </div><!-- end radio div -->
+            &nbsp;
+          </div><!-- end form-group div -->
+	    <button type="submit" value="[% request.id %]" name="id">Submit Request</button>
+	  </div><!-- end column -->
+        </div><!-- end row -->
+        </form> 
+      </div><!-- end panel-body div -->
+    </div><!-- end panel-panel div -->
+  </div><!-- end col-lg-12 div -->
+</div>
+[% PROCESS requests/requestor.tt2 %]
+[% PROCESS requests/data_purpose.tt2 %]
+
+[% USE JSON %]
+[% IF risk_scores.0 %]
+[% PROCESS requests/ig_risk_score.tt2 %]
+[% END %]
+
+[% PROCESS requests/data_handling.tt2 %]
+[% PROCESS requests/data_manage.tt2 %]
+[% PROCESS requests/data_requested.tt2 %]
+

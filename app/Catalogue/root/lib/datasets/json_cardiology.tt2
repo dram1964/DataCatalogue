@@ -1,0 +1,27 @@
+[% USE JSON; 
+  data = JSON.json_decode(item.fact);
+  type = item.fact_type;
+%]
+<div class="row placeholders">
+    <div class="col-xs-24 col-sm-12 placeholder">
+<h2 class="sub-header">Cardiology Data</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Domain</th>
+        <th>Number</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH key IN data.tasks.keys %]
+      <tr>
+        <td>Patients with [% key %] data</td>
+        <td>[% data.tasks.$key %]</td>
+      <tr>
+[% END %]
+    </tbody>
+  </table>
+</div>
+    </div>
+</div>

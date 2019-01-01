@@ -1,0 +1,29 @@
+[% META title = 'Winpath Data' %]
+<p class="lead">Winpath Data </p> 
+[% IF pager.total_entries && pager.total_entries > 30 %]
+[% PROCESS site/pager %]
+[% END %]
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>order_code</th>
+        <th>test_code</th>
+        <th>laboratory_code</th>
+        <th>cluster_name</th>
+        <th>requests</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH row IN wp_data %]
+      <tr>
+        <td>[% row.order_code.code %]</td>
+        <td>[% row.test_code.code %]</td>
+        <td>[% row.laboratory_code.code %]</td>
+	<td>[% row.cluster_name %]</td>
+        <td>[% row.requests %]</td>
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>

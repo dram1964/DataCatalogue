@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-lg-12">
+[% IF verify.manage_user_name %]
+<div class="panel panel-danger">
+[% ELSE %]
+<div class="panel panel-success">
+[% END %]
+      <div class="panel-heading">Data Management </div>
+      <div class="panel-body text-left">
+
+        <div class="form-group">
+<label>Where will you be storing and processing this data</label>
+<p>Please explain where the data will be stored and processed. Please indicate whether the data will be stored or processed within or outside the EU</p>
+<textarea name="storing" ng-model="ctrl.data.storing"
+	class="form-control"></textarea>
+[% IF verify.storing_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.storing_comment %] - [% verify.manage_user_name %]</span></p> 
+[% END %]
+        </div><!-- end form-group -->
+
+        <div class="form-group">
+<label>Please describe security arrangements to protect the data</label>
+<p>Please describe security arrangements to prevent unauthorised access to the data.</p>
+<textarea name="secure" ng-model="ctrl.data.secure"
+	class="form-control"></textarea>
+[% IF verify.secure_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.secure_comment %] - [% verify.manage_user_name %]</span></p> 
+[% END %]
+        </div><!-- end form-group -->
+        <div class="form-group">
+<label>Data Disposal Plan</label>
+<p>Please explain what you intend to do with the data on completion of this project. How do you intend to archive or destroy all copies of the data on completion of the project.</p>
+<textarea name="completion" ng-model="ctrl.data.completion"
+	class="form-control"></textarea>
+<label>Please provide an indicative date for when this will happen</label>
+<input type="text" name="completion_date" ng-model="ctrl.data.completionDate" placeholder="YYYY-MM-DD"
+	ng-pattern="/^[1,2][0-9]{3,3}-[0-1][0-9]-[0-3][0-9]$/"
+	class="form-control"></input>
+<span class="alert-danger" ng-show="newRequest.completion_date.$invalid">Invalid date entered: use YYYY-MM-DD format</span>
+[% IF verify.completion_comment %]
+<p>Reviewer Comments:<span class="alert-danger">[% verify.completion_comment %] - [% verify.manage_user_name %]</span></p> 
+[% END %]
+        </div><!-- end form-group -->
+
+      </div><!-- end panel-body div -->
+    </div><!-- end panel-panel div -->
+  </div><!-- end col-lg-12 div -->
+</div><!-- end row div -->

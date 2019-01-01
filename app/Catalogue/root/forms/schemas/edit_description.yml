@@ -1,0 +1,20 @@
+indicator: submit
+elements:
+    - type: Textarea
+      name: description 
+      label: Schema Description
+      attributes:
+        title: Enter Description for Schema
+        class: form-control
+        autofocus: 1
+      constraints:
+        - Required
+
+    - type: Submit
+      name: submit 
+      value: Submit
+      attributes:
+        class: btn btn-primary
+filter:
+    - TrimEdges
+    - HTMLEscape

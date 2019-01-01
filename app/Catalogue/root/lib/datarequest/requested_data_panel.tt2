@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-12">
+[% IF verify.data_user_name %]
+<div class="panel panel-danger">
+[% ELSE %]
+<div class="panel panel-success">
+[% END %]
+      <div class="panel-heading">Data Requested </div>
+      <div class="panel-body">
+
+[% FOREACH row IN data_categorys %]
+[% category = row.category %]
+[% comment = category _ '_comment' %]
+<div class="text-left">
+	  <input type="checkbox" ng-checked="ctrl.data.[% category %] == true" ng-model="ctrl.data.[% category %]" name="[% category %]" >[% category %]</input>
+</div>
+	<div ng-show="ctrl.data.[% category %]">	
+            <label for="[% category %]Details">Please specify required [% category %] data</label>
+		<textarea name="[% category %]Details" ng-model="ctrl.data.[% category %]Details" class="form-control"></textarea>
+[% IF verify.$comment %]
+<p>Reviewer Comments:<span class="alert-warning">[% verify.$comment %] - [% verify.data_user_name %]</span></p> 
+[% END %]
+        </div>
+[% END %]
+      </div><!-- end panel-body div -->
+    </div><!-- end panel-panel div -->
+  </div><!-- end col-lg-12 div -->
+</div>
+

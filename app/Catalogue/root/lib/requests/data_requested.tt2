@@ -1,0 +1,19 @@
+<div class="table-responsive">
+  <table class="table table-striped text-left">
+  <caption>Data Requested</caption>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Request</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH item IN request.data_request_details %]
+      <tr>
+        <td>[% item.data_category.friendly_category %]</td>
+        <td>[% item.detail %]</td>
+      </tr>
+[% END %]
+    </tbody>
+  </table>
+</div>

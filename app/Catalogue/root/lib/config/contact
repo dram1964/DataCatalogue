@@ -1,0 +1,18 @@
+[% 
+  site.contacts = [
+    {
+      name = 'Joe Blogs'
+      email = 'joe.blow@example.com'
+      phone = '816-80085'
+      role = 'Administrator'
+    },
+    {
+      name = 'Jane Doe'
+      email = 'jane.doe@example.com'
+      phone = '816-80085'
+      role = 'Curator'
+    },
+  ]
+  site.administrator.mailto = 'mailto://site.admin@example.com'
+  site.administrator.registration_error = 'mailto://site.admin@example.com?Subject=Data%20Catalogue%20Registration%20Error'
+%]

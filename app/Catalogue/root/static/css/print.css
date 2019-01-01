@@ -1,0 +1,26 @@
+#content, #page {
+  width: 100%;
+  margin: 0;
+  float: none;
+}
+
+body {
+  font: 13pt Georgia, "Times New Roman", Times, serif;
+  line-height: 1.3;
+  background: #fff !important;
+  color: #000;
+}
+
+.main {
+  width: 100%;
+  margin: 0;
+  float: none;
+}
+
+input {
+  display: none !important;
+}
+
+.no-print, .btn {
+  display: none !important;
+}

@@ -1,0 +1,73 @@
+indicator: submit
+elements:
+    - type: Text
+      name: username
+      label: Username
+      attributes:
+        title: Enter username here
+        class: form-control
+        autofocus: 1
+      constraints:
+        - type: Length
+          min: 5
+          max: 50
+          message: must be between 5 and 50 characters long
+        - Required
+
+    - type: Text
+      name: email_address
+      label: Email Address
+      attributes:
+        title: Enter email address
+        class: form-control
+        rows: 0
+        columns: 0
+ 
+    - type: Text
+      name: first_name
+      label: First Name
+      attributes:
+        title: First Name
+        class: form-control
+        rows: 0
+        columns: 0
+ 
+    - type: Text
+      name: last_name
+      label: Last Name
+      attributes:
+        title: Last Name
+        class: form-control
+        rows: 0
+        columns: 0
+ 
+    - type: Radiogroup
+      name: active
+      options: 
+        - [ '1', 'Active']
+        - [ '0', 'Inactive']
+      label: Active
+      attributes:
+        title: Active
+        class: form-control
+        rows: 0
+        columns: 0
+
+    - type: Checkboxgroup
+      name: roles
+      label: Roles
+      attributes:
+        title: Roles
+        class: form-control
+        rows: 0
+        columns: 0
+ 
+    - type: Submit
+      name: submit 
+      value: Submit
+      attributes:
+        class: btn btn-primary
+
+filter:
+    - TrimEdges
+    - HTMLEscape

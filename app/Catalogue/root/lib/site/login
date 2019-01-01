@@ -1,0 +1,3 @@
+[% IF c.user_exists %]
+<p><a href="[% c.uri_for('/logout') %]">Logout</a></p> 
+[% END %]

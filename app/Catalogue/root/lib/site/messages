@@ -1,0 +1,9 @@
+[% IF status_msg %]
+<span class="alert-success">[% status_msg %]</span>
+[% END %]
+[% IF warning_msg %]
+<span class="alert-warning">[% warning_msg %]</span>
+[% END %]
+[% IF error_msg %]
+<span class="alert-danger">[% error_msg %]</span>
+[% END %]

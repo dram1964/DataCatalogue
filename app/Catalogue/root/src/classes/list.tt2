@@ -1,0 +1,12 @@
+[% META title = 'System Classifications' -%]
+<table>
+  <tr><th>Name</th><th>Links<th><th>Description</th></tr>
+[% FOREACH class IN classes -%]
+  <tr>
+    <td>[% class.name %]</td>
+    <td><a href="[% c.uri_for(c.controller.action_for('delete'), [class.id]) %]">Delete</a></td>
+    <td>[% class.description %]</td>
+  </tr>
+[% END -%]
+</table>
+<p><a href="[% c.uri_for(c.controller.action_for('form_create')) %]">Add New System Classification</a></p>

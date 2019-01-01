@@ -1,0 +1,22 @@
+indicator: submit
+elements:
+    - type: Text
+      name: description 
+      label: Schema Description
+      attributes:
+        title: Enter Description for Schema
+        class: form-control
+        autofocus: 1
+      constraints:
+        - Required
+        - type: Length
+          min: 5
+          max: 50
+          message: Length must be between 5 and 50 characters
+
+    - type: Submit
+      name: submit 
+      value: Submit
+filter:
+    - TrimEdges
+    - HTMLEscape

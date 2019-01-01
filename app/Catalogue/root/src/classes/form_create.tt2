@@ -1,0 +1,9 @@
+[% META title = 'Form for New System Classifications' -%]
+
+<form method="post" action="[% c.uri_for('form_create_do') %]">
+<table>
+  <tr><td>Name:</td><td><input type="text" name="name"></td></tr>
+  <tr><td>Description:</td><td><input type="text" name="description"></td></tr>
+</table>
+<input type="submit" name="Submit" value="Submit">
+</form>

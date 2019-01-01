@@ -1,0 +1,53 @@
+<nav class="navbar">
+<ul class="nav nav-sidebar">
+  <li>Menu</li>
+  <li><a href="[% c.uri_for('/datasets/list') %]">Datasets</a></li>
+[% IF datasets %]
+	<li><ul>
+  [% FOREACH dataset IN datasets %]
+		<li><a href="[% c.uri_for(c.controller.action_for('explore_json'), [dataset.id]) %]">[% dataset.name %]</a></li>
+  [% END %]
+	</ul></li>
+[% END %]
+  <li><a href="[% c.uri_for('/datarequest/list') %]">Data Requests</a></li>
+</ul>
+[% IF c.check_user_roles('curator') %]
+<ul class="nav nav-sidebar">
+  <li>System Maintenance</li>
+  <li><a href="[% c.uri_for('/databases/list') %]">Databases</a></li>
+  <li><a href="[% c.uri_for('/applications/list') %]">Applications</a></li>
+  <li><a href="[% c.uri_for('/schemas/list') %]">Schemas</a></li>
+  <li><a href="[% c.uri_for('/tables/list') %]">Tables</a></li>
+  <li><a href="[% c.uri_for('/columns/list') %]">Columns</a></li>
+  <li>Reference Tables</li>
+  <li><a href="[% c.uri_for('/tasks/list') %]">Todo List</a></li>
+  <li><a href="[% c.uri_for('/kpe/list') %]">KPEs</a></li>
+  <li><a href="[% c.uri_for('/category2/list') %]">Cat2s</a></li>
+  <li><a href="[% c.uri_for('/supplier/list') %]">Suppliers</a></li>
+  <li><a href="[% c.uri_for('/erid/list') %]">ERIDs</a></li>
+</ul>
+[% END %]
+[% IF c.check_user_roles('admin') %]
+<ul class="nav nav-sidebar">
+  <li>Admin Menu</li>
+  <li><a href="[% c.uri_for('/users/list') %]">Users</a></li>
+  <li><a href="[% c.uri_for('/registration/list') %]">Registration Review</a></li>
+</ul>
+[% END %]
+[% IF c.check_user_roles('verifier') OR c.check_user_roles('admin') %]
+<ul class="nav nav-sidebar">
+  <li><a href="[% c.uri_for('/datareview/list') %]">Data Review</a></li>
+</ul>
+[% END %]
+[% IF c.check_user_roles('ig_admin') %]
+<ul class="nav nav-sidebar">
+  <li>IG Admin</li>
+  <li><a href="[% c.uri_for('/igadmin/list') %]">IG Review</a></li>
+</ul>
+[% END %]
+<ul class="nav nav-sidebar">
+  <li><a href="[% c.uri_for('/about') %]">About</a></li>
+  <li><a href="[% c.uri_for('/contact') %]">Contact</a></li>
+  <li><a href="[% c.uri_for('/help') %]">Help</a></li>
+</ul>
+</nav>

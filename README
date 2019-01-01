@@ -1,0 +1,7 @@
+Data Request Catalogue
+
+The application can be started with 'docker-compose up'
+
+Logon using one of the following accounts: 
+1) admin - letmein
+2) test0[1-7] - mypass

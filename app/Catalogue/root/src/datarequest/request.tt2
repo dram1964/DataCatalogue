@@ -1,0 +1,39 @@
+[% META title = 'Data Request Form' %]
+
+[% USE JSON %]
+[% IF request %]
+<script type="text/javascript">
+  var request = [% request.json %];
+</script>
+[% END %]
+
+<p>Please fill-in the details</p>
+<div ng-app="datarequest">
+  <div ng-controller="MainCtrl as ctrl">
+	    <form><button ng-click="ctrl.change()">Autofill</button></form>
+[% IF request %]
+    <p>Editing an existing request</p>
+    <form name="newRequest" ng-submit="ctrl.submit()" method="post" action="[% c.uri_for(c.controller.action_for('update_request'), [request.id]) %]">
+[% ELSE %]
+    <p>Adding a new request</p>
+    <form name="newRequest" ng-submit="ctrl.submit()" method="post" action="ng_request_submitted">
+[% END %]
+      <div class="controls">
+[% INCLUDE datarequest/requestor_details_panel.tt2 %]
+[% INCLUDE datarequest/request_type_panel.tt2 %]
+[% FOR type IN [1,2,3,4,5,6] %]
+   [% PROCESS datarequest/request_purpose_panel.tt2 %]
+   [% PROCESS datarequest/data_handling_panel.tt2 %]
+[% END %]
+   [% PROCESS datarequest/data_management_panel.tt2 %]
+[% INCLUDE datarequest/requested_data_panel.tt2 %]
+[% INCLUDE datarequest/submit_save.tt2 %]
+      </div><!-- end controls -->
+
+    </form>
+  </div><!-- end ng-controlller -->
+</div><!-- end ng-app -->
+
+<script src="[% site.url.js %]/angular1.3.11/angular.js"></script>
+<script type="text/javascript" src="[% site.url.ng %]/ng_request.js">
+</script>

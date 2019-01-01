@@ -1,0 +1,38 @@
+[% META title = 'Application List' %]
+[% IF search_term %]
+<p>Applications matching search term <strong>[% search_term %]</strong></p>
+[% ELSE %]
+<p class="lead">List of all Applications on the Metadata Catalogue</p>
+[% END %]
+[% IF pager.total_entries && pager.total_entries > 30 %]
+[% PROCESS site/pager %]
+[% END %]
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Application Name</th>
+        <th>Application Description</th>
+        <th>Key Production Environment</th>
+        <th>Subcategory</th>
+        <th>Supplier</th>
+      </tr>
+    </thead>
+    <tbody>
+[% FOREACH application IN applications %]
+      <tr>
+        <td>[% application.name | html %]</td>
+        <td>[% application.description | html %]
+<a href="[% c.uri_for(c.controller.action_for('edit'), [application.id]) %]">Edit</a>
+</td>
+        <td>[% application.kpe.name | html %]</td>
+        <td>[% application.cat2.name | html %]</td>
+        <td>[% application.supplier.name | html %]</td>
+      </tr>
+[% END %]
+      </tbody>
+    </table>
+</div>
+[% IF pager.total_entries && pager.total_entries > 30 %]
+[% PROCESS site/pager %]
+[% END %]
