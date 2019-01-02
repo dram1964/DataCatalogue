@@ -1,4 +1,4 @@
-FROM catalyst:latest
+FROM dram1964/catalyst:1.0
 
 WORKDIR /usr/src
 
