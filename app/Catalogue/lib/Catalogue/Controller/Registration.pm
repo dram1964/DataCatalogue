@@ -17,6 +17,23 @@ Catalyst Controller.
 
 =cut
 
+=head2 auto
+
+Deny all access unless user has admin rights
+
+=cut
+
+sub auto : Private {
+    my ( $self, $c ) = @_;
+    unless ( $c->user->has_role('admin') )
+    {
+        $c->stash( error_msg =>
+                'Your account does not have permission to manage registration requests. '
+                . 'Please contact your administrator' );
+        $c->detach('/error_noperms');
+    }
+}
+
 =head2 index
 
 =cut
@@ -36,11 +53,14 @@ Can place common logic to start a chained dispatch here
 
 sub base : Chained('/') : PathPart('registration') : CaptureArgs(0) {
     my ( $self, $c ) = @_;
+    my $model = $c->model('DB::RegistrationRequest');
     $c->stash( resultset => $c->model('DB::RegistrationRequest') );
 
+=for removal
     $c->detach('/error_noperms')
         unless $c->stash->{resultset}
-        ->first->edit_allowed_by( $c->user->get_object );
+        ->edit_allowed_by( $c->user->get_object );
+=cut
 
     $c->load_status_msgs;
 }

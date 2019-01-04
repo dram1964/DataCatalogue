@@ -17,6 +17,8 @@ services:
 
   app:
     image: 'dram1964/catalogue:1.0'
+    env_file:
+      - '.app_env'
     depends_on: 
       - 'catalyst'
     volumes:
