@@ -18,14 +18,14 @@ Catalyst Controller.
 
 =head1 auto
 
-Deny all access unless user has admin rights
+Deny all access unless user has curator or admin rights
 
 =cut
 
 sub auto : Private {
     my ( $self, $c ) = @_;
     $c->detach('/error_noperms')
-        unless $c->user->has_role('admin');
+        unless ( $c->user->has_role('curator') || $c->user->has_role('admin') );
 }
 
 =head2 index
@@ -93,9 +93,6 @@ Fetch all items in the todo list
 
 sub list : Chained('base') : PathPart('list') : Args(0) {
     my ( $self, $c ) = @_;
-    $c->detach('/error_noperms')
-        unless $c->stash->{resultset}
-        ->first->edit_allowed_by( $c->user->get_object );
     $c->stash(
         {   tasks    => [ $c->stash->{resultset}->all ],
             template => 'tasks/list.tt2',
@@ -111,9 +108,6 @@ Use HTML::FormFu to create a new task
 
 sub create : Chained('base') : PathPart('create') : Args(0) : FormConfig {
     my ( $self, $c ) = @_;
-    $c->detach('/error_noperms')
-        unless $c->stash->{resultset}
-        ->first->edit_allowed_by( $c->user->get_object );
     my $form = $c->stash->{form};
 
     if ( $form->submitted_and_valid ) {
@@ -148,8 +142,6 @@ Use HTML::FormFu to update an existing task
 sub edit : Chained('object') : PathPart('edit') : Args(0)
     : FormConfig('tasks/create.yml') {
     my ( $self, $c ) = @_;
-    $c->detach('/error_noperms')
-        unless $c->stash->{object}->edit_allowed_by( $c->user->get_object );
     my $task = $c->stash->{object};
     unless ($task) {
         $c->response->redirect(
